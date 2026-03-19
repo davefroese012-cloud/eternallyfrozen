@@ -14,19 +14,7 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur z-50 py-4 border-b border-[#4a0e0e]">
-    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="h-16 sm:h-20">
-      <div class="space-x-6 text-sm font-medium">
-        <a href="index.html" class="hover:accent">Home</a>
-        <a href="portfolio.html" class="hover:accent">Portfolio</a>
-        <a href="flash.html" class="hover:accent">Flash</a>
-        <a href="prints.html" class="hover:accent">Prints & Paintings</a>
-        <a href="book.html" class="hover:accent">Book Now</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Header loads here via JS -->
 
   <!-- HERO -->
   <section class="min-h-screen flex items-center justify-center relative overflow-hidden gold-border" style="background: url('Images/hero.webp') center/cover no-repeat;">
@@ -48,6 +36,15 @@
     <p class="text-lg sm:text-xl leading-relaxed">After years training under Chris Pecor at Dead Man Worx, I just passed my full apprenticeship. Specializing in hyper-realistic portraits, dark gothic pieces, and Renaissance-inspired work. Currently tattooing at Dead Man Worx in Chilliwack but building my own brand for the future.</p>
   </section>
 
-  <?php include 'footer.php'; ?>
+  <!-- Footer loads here via JS -->
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.body.insertAdjacentHTML('beforeend', data));
+  </script>
 </body>
 </html>
