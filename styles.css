@@ -1,10 +1,17 @@
+/* styles.css - Shared across all pages */
+
+/* Base */
 body {
     background: #0a0005;
     color: #fff;
     font-family: 'Playfair Display', serif;
     margin: 0;
+    padding-top: 80px;
+    /* Prevents fixed header from overlapping content */
+    line-height: 1.6;
 }
 
+/* Accent & Borders */
 .accent {
     color: #d4af37;
     text-shadow: 0 0 20px #d4af37;
@@ -15,61 +22,73 @@ body {
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
 }
 
-/* Mobile-first responsive */
-@media (max-width: 640px) {
-    nav .space-x-6 {
-        space-x-4;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-    }
-
-    img {
-        max-height: 300px;
-        object-fit: cover;
-    }
-
-    a.inline-block {
-        padding: 1rem 2rem;
-        font-size: 1.125rem;
-    }
+/* Typography scaling (mobile-first) */
+h1 {
+    font-size: 2.5rem;
+    @apply sm:text-5xl lg:text-6xl xl:text-7xl;
 }
 
-@media (min-width: 640px) {
-    .grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
+h2 {
+    font-size: 2rem;
+    @apply sm:text-4xl lg:text-5xl;
 }
 
-@media (min-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 2rem;
-    }
-
-    h1 {
-        font-size: 4.5rem;
-    }
+h3 {
+    font-size: 1.5rem;
+    @apply sm:text-2xl lg:text-3xl;
 }
 
-/* Hover & buttons */
-a:hover {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-    transition: all 0.3s;
+p,
+li {
+    font-size: 1rem;
+    @apply sm:text-lg lg:text-xl;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    /* Improves readability on dark bg */
 }
 
+/* Navigation */
+nav .space-x-6 {
+    @apply space-x-4 sm:space-x-6 flex-wrap;
+}
+
+nav a {
+    @apply hover:accent transition-colors;
+}
+
+/* Grid (portfolio) - mobile-first */
+.grid {
+    @apply grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 lg:gap-8;
+}
+
+.grid img {
+    @apply w-full h-auto object-cover rounded-xl transition-transform duration-300 group-hover:scale-105;
+}
+
+/* Buttons & Links */
 button,
 a.inline-block {
-    transition: all 0.3s;
+    @apply transition-all duration-300;
+}
+
+a.inline-block {
+    @apply px-8 py-4 sm:px-14 sm:py-6 text-lg sm:text-2xl font-bold;
+}
+
+/* Hover effects */
+a:hover,
+button:hover {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Hero overlay for readability */
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+}
+
+/* Lightbox overrides (if needed) */
+.lightbox {
+    background: rgba(0, 0, 0, 0.95);
 }
