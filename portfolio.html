@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio • Eternally Frozen Tattoo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <style>
+    body { background: #0a0005; color: #fff; font-family: 'Playfair Display', serif; }
+    .accent { color: #d4af37; text-shadow: 0 0 20px #d4af37; }
+    .gold-border { border: 3px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV (copy from index.html) -->
+  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur z-50 py-4 border-b border-[#4a0e0e]">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="h-16 sm:h-20">
+      <div class="space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:accent">Home</a>
+        <a href="portfolio.html" class="hover:accent">Portfolio</a>
+        <a href="flash.html" class="hover:accent">Flash</a>
+        <a href="prints.html" class="hover:accent">Prints & Paintings</a>
+        <a href="book.html" class="hover:accent">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PORTFOLIO -->
+  <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h1 class="text-5xl sm:text-6xl text-center accent mb-16">PORTFOLIO</h1>
+      
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- All your images – add alt text and captions as needed -->
+        <a href="Images/portfolio/IMG_4119.webp" data-lightbox="portfolio" data-title="Renaissance portrait">
+          <img src="Images/portfolio/IMG_4119.webp" alt="Renaissance portrait tattoo" class="w-full rounded-xl gold-border">
+        </a>
+        <a href="Images/portfolio/IMG_4121.webp" data-lightbox="portfolio" data-title="Gothic church">
+          <img src="Images/portfolio/IMG_4121.webp" alt="Gothic church tattoo" class="w-full rounded-xl gold-border">
+        </a>
+        <a href="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" data-lightbox="portfolio" data-title="Ladybug">
+          <img src="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" alt="Ladybug color realism" class="w-full rounded-xl gold-border">
+        </a>
+        <!-- Add all the rest here – copy the pattern -->
+        <!-- ... (paste the remaining <a> tags from your previous list) ... -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (copy from index.html) -->
+  <footer class="bg-black py-12 text-center border-t border-[#4a0e0e]">
+    <p class="text-sm">© Eternally Frozen Tattoo • Chloe Froese • Chilliwack, BC</p>
+    <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>
