@@ -120,3 +120,53 @@ body {
         padding: 1.5rem 1rem;
     }
 }
+/* NAV HEADER - FOR SEPARATE header.html (ice theme) */
+.nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    max-height: 55px;
+    width: auto;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 2.5rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #d4af37;
+    /* gold accent */
+}
+
+/* Fix hero so it doesn't fight the fixed header */
+.hero {
+    min-height: 85vh;
+    /* was 100vh — this stops the massive scroll */
+}
+
+/* Body padding for fixed header */
+body {
+    padding-top: 95px;
+}
