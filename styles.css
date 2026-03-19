@@ -1,66 +1,134 @@
-/* Prevent header overlap */
-body {
-    padding-top: 100px;
-    /* Increase if nav height changes */
+/* ====================== ETERNALLY FROZEN TATTOO - FULL STYLES.CSS ====================== */
+/* March 2026 - Fixed hero, ice theme, Tailwind compatible, perfect readability */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Hero fixes */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding-top: 100px;
+    margin: 0;
+}
+
+/* HERO SECTION - FULLY FIXED */
 .hero-section {
     position: relative;
+    min-height: 100vh;
+    background: url('images/hero.webp') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 0, 5, 0.6);
-    /* Dark overlay for text readability */
+    background: linear-gradient(rgba(5, 15, 45, 0.75),
+            rgba(10, 30, 70, 0.92));
+    /* Deep frozen blue-black overlay */
     z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
-    padding: 4rem 2rem;
-    /* More breathing room */
+    z-index: 3;
     text-align: center;
+    padding: 2rem 1.5rem;
+    max-width: 960px;
+}
+
+.hero-content img {
+    /* Rabbit Logo */
+    max-height: 260px;
+    width: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 12px 40px rgba(0, 212, 255, 0.35));
+    /* subtle ice glow */
 }
 
 .hero-content h1 {
-    margin-bottom: 1.5rem;
-    /* Space below title */
+    font-size: clamp(3.2rem, 9vw, 7rem);
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    text-shadow: 0 6px 30px rgba(0, 0, 0, 0.95);
+    margin-bottom: 1rem;
+    line-height: 1.05;
 }
 
 .hero-content p {
+    font-size: clamp(1.3rem, 4vw, 2.1rem);
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
     margin-bottom: 1.5rem;
-    /* Space between subtitle lines */
+    opacity: 0.98;
 }
 
-/* About section spacing */
+.hero-content .accent {
+    color: #d4af37;
+    /* your gold accent preserved */
+}
+
+/* Booking button */
+.hero-content a {
+    display: inline-block;
+    background: transparent;
+    border: 4px solid #d4af37;
+    color: #d4af37;
+    padding: 1.25rem 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.4s ease;
+    margin-top: 1rem;
+}
+
+.hero-content a:hover {
+    background: #d4af37;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* ABOUT SECTION */
 .about-section {
     padding-top: 4rem;
 }
 
 .about-section img {
     margin-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
 }
 
-/* Mobile-specific adjustments */
+/* Mobile adjustments */
 @media (max-width: 640px) {
+    body {
+        padding-top: 85px;
+    }
+
     .hero-content {
-        padding: 3rem 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .hero-content img {
+        max-height: 180px;
     }
 
     .hero-content h1 {
-        font-size: 2.5rem;
-        line-height: 1.1;
+        font-size: 2.8rem;
     }
 
     .hero-content p {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
     }
+}
 
-    body {
-        padding-top: 90px;
-        /* Slightly less on mobile */
-    }
+/* Extra polish for gold border class */
+.gold-border {
+    border: 3px solid #d4af37;
+    padding: 4px;
 }
