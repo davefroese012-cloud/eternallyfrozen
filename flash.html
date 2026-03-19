@@ -13,19 +13,7 @@
 </head>
 <body>
 
-  <!-- NAV (copy from index.html) -->
-  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur z-50 py-4 border-b border-[#4a0e0e]">
-    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="h-16 sm:h-20">
-      <div class="space-x-6 text-sm font-medium">
-        <a href="index.html" class="hover:accent">Home</a>
-        <a href="portfolio.html" class="hover:accent">Portfolio</a>
-        <a href="flash.html" class="hover:accent">Flash</a>
-        <a href="prints.html" class="hover:accent">Prints & Paintings</a>
-        <a href="book.html" class="hover:accent">Book Now</a>
-      </div>
-    </div>
-  </nav>
+  <!-- Header loads here -->
 
   <!-- FLASH -->
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
@@ -34,7 +22,6 @@
       <p class="text-center text-xl mb-12">Reserve with e-transfer deposit • More added monthly</p>
       
       <div class="grid md:grid-cols-3 gap-10">
-        <!-- Example card – duplicate for more -->
         <div class="flash-card bg-zinc-950 rounded-3xl overflow-hidden gold-border">
           <img src="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" class="w-full h-80 object-cover">
           <div class="p-8">
@@ -48,15 +35,20 @@
             </button>
           </div>
         </div>
-        <!-- Add more cards here by copying the div above -->
+        <!-- Duplicate the div above for additional flash designs -->
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-black py-12 text-center border-t border-[#4a0e0e]">
-    <p class="text-sm">© Eternally Frozen Tattoo • Chloe Froese • Chilliwack, BC</p>
-    <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
-  </footer>
+  <!-- Footer loads here -->
+
+  <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => document.body.insertAdjacentHTML('afterbegin', data));
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.body.insertAdjacentHTML('beforeend', data));
+  </script>
 </body>
 </html>
