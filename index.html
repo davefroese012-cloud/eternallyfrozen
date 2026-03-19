@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETERNALLY FROZEN TATTOO • Chloe Froese • Chilliwack BC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <style>
+    body { background: #0a0005; color: #fff; font-family: 'Playfair Display', serif; }
+    .accent { color: #d4af37; text-shadow: 0 0 20px #d4af37; }
+    .gold-border { border: 3px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur z-50 py-4 border-b border-[#4a0e0e]">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="h-16 sm:h-20">
+      <div class="space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:accent">Home</a>
+        <a href="portfolio.html" class="hover:accent">Portfolio</a>
+        <a href="flash.html" class="hover:accent">Flash</a>
+        <a href="prints.html" class="hover:accent">Prints & Paintings</a>
+        <a href="book.html" class="hover:accent">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden gold-border" style="background: url('Images/hero.webp') center/cover no-repeat;">
+    <div class="text-center z-10 px-6">
+      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="mx-auto h-48 sm:h-64 mb-8">
+      <h1 class="text-5xl sm:text-7xl font-bold tracking-widest accent">ETERNALLY FROZEN TATTOO</h1>
+      <p class="text-xl sm:text-2xl mt-6">Chloe Froese • Renaissance • Gothic • Hyper-Realism</p>
+      <p class="mt-8 text-lg sm:text-xl">Chilliwack, BC • Just completed apprenticeship</p>
+      <a href="book.html" class="mt-10 inline-block px-10 sm:px-14 py-5 sm:py-6 border-4 border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black text-xl sm:text-2xl font-bold transition">
+        BOOK WITH CHLOE FROESE
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="max-w-5xl mx-auto py-20 px-6 text-center">
+    <h2 class="text-4xl sm:text-5xl accent mb-10">About Chloe</h2>
+    <img src="Images/portfolio/IMG_6510.webp" alt="Chloe tattooing" class="mx-auto rounded-2xl mb-10 shadow-2xl max-w-md">
+    <p class="text-lg sm:text-xl leading-relaxed">After years training under Chris Pecor at Dead Man Worx, I just passed my full apprenticeship. Specializing in hyper-realistic portraits, dark gothic pieces, and Renaissance-inspired work. Currently tattooing at Dead Man Worx in Chilliwack but building my own brand for the future.</p>
+  </section>
+
+  <?php include 'footer.php'; ?>
+</body>
+</html>
