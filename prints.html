@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prints & Paintings • Eternally Frozen Tattoo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0a0005; color: #fff; font-family: 'Playfair Display', serif; }
+    .accent { color: #d4af37; text-shadow: 0 0 20px #d4af37; }
+    .gold-border { border: 3px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full bg-black/95 backdrop-blur z-50 py-4 border-b border-[#4a0e0e]">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <img src="Images/logo/Rabbit Logo.webp" alt="Eternally Frozen" class="h-16 sm:h-20">
+      <div class="space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:accent">Home</a>
+        <a href="portfolio.html" class="hover:accent">Portfolio</a>
+        <a href="flash.html" class="hover:accent">Flash</a>
+        <a href="prints.html" class="hover:accent">Prints & Paintings</a>
+        <a href="book.html" class="hover:accent">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PRINTS -->
+  <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h1 class="text-5xl sm:text-6xl text-center accent mb-16">PAINTINGS & PRINTS</h1>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="bg-zinc-950 rounded-3xl overflow-hidden gold-border p-8">
+          <img src="Images/portfolio/IMG_3990.webp" class="w-full rounded-2xl">
+          <h3 class="text-3xl mt-8">Pietà Original Print – 11x14"</h3>
+          <p class="text-4xl mt-4">$85</p>
+          <button onclick="alert('Message Chloe on IG @eternallyfrozen.ttt to inquire!')" class="mt-10 w-full py-6 border-4 border-[#d4af37] hover:bg-[#d4af37] hover:text-black text-xl font-bold">
+            INQUIRE via E-TRANSFER
+          </button>
+        </div>
+        <!-- Add more prints by copying the div above -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-12 text-center border-t border-[#4a0e0e]">
+    <p class="text-sm">© Eternally Frozen Tattoo • Chloe Froese • Chilliwack, BC</p>
+    <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
+  </footer>
+</body>
+</html>
