@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio • Eternally Frozen Tattoo</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-  <style>
-    body { background: #0a0005; color: #fff; font-family: 'Playfair Display', serif; }
-    .accent { color: #d4af37; text-shadow: 0 0 20px #d4af37; }
-    .gold-border { border: 3px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-  </style>
 </head>
+
 <body>
 
-  <!-- Header loads via JS -->
+  <!-- Header loads here -->
 
   <!-- PORTFOLIO -->
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
     <div class="max-w-7xl mx-auto px-6">
       <h1 class="text-5xl sm:text-6xl text-center accent mb-16">PORTFOLIO</h1>
-      
+
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        <a href="Images/portfolio/IMG_4119.webp" data-lightbox="portfolio" data-title="Renaissance portrait">
-          <img src="Images/portfolio/IMG_4119.webp" alt="Renaissance portrait tattoo" class="w-full rounded-xl gold-border">
+        <a href="Images/portfolio/IMG_4119.webp" data-lightbox="portfolio" data-title="Renaissance portrait tattoo">
+          <img src="Images/portfolio/IMG_4119.webp" alt="Renaissance portrait tattoo"
+            class="w-full rounded-xl gold-border">
         </a>
-        <a href="Images/portfolio/IMG_4121.webp" data-lightbox="portfolio" data-title="Gothic church">
+        <a href="Images/portfolio/IMG_4121.webp" data-lightbox="portfolio" data-title="Gothic church tattoo">
           <img src="Images/portfolio/IMG_4121.webp" alt="Gothic church tattoo" class="w-full rounded-xl gold-border">
         </a>
-        <!-- Add all remaining images here using the same pattern -->
-        <!-- Example: -->
-        <a href="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" data-lightbox="portfolio" data-title="Ladybug">
-          <img src="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" alt="Ladybug color realism" class="w-full rounded-xl gold-border">
+        <a href="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" data-lightbox="portfolio"
+          data-title="Ladybug color realism">
+          <img src="Images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" alt="Ladybug color realism"
+            class="w-full rounded-xl gold-border">
         </a>
-        <!-- ... paste the rest from your previous list ... -->
+        <!-- Add the rest of your images here using the same pattern -->
+        <!-- Example: -->
+        <!-- <a href="Images/portfolio/IMG_XXXX.webp" data-lightbox="portfolio" data-title="Description">
+          <img src="Images/portfolio/IMG_XXXX.webp" alt="Description" class="w-full rounded-xl gold-border">
+        </a> -->
       </div>
     </div>
   </section>
 
-  <!-- Footer loads via JS -->
+  <!-- Footer loads here -->
 
   <script>
     fetch('header.html')
@@ -49,4 +52,5 @@
       .then(data => document.body.insertAdjacentHTML('beforeend', data));
   </script>
 </body>
+
 </html>

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prints & Paintings • Eternally Frozen Tattoo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { background: #0a0005; color: #fff; font-family: 'Playfair Display', serif; }
-    .accent { color: #d4af37; text-shadow: 0 0 20px #d4af37; }
-    .gold-border { border: 3px solid #d4af37; box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- Header loads here -->
 
-  <!-- PRINTS -->
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
     <div class="max-w-6xl mx-auto px-6">
       <h1 class="text-5xl sm:text-6xl text-center accent mb-16">PAINTINGS & PRINTS</h1>
@@ -24,10 +21,12 @@
           <img src="Images/portfolio/IMG_3990.webp" class="w-full rounded-2xl">
           <h3 class="text-3xl mt-8">Pietà Original Print – 11x14"</h3>
           <p class="text-4xl mt-4">$85</p>
-          <button onclick="alert('Message Chloe on IG @eternallyfrozen.ttt to inquire!')" class="mt-10 w-full py-6 border-4 border-[#d4af37] hover:bg-[#d4af37] hover:text-black text-xl font-bold">
+          <button onclick="alert('Message Chloe on IG @eternallyfrozen.ttt to inquire!')"
+            class="mt-10 w-full py-6 border-4 border-[#d4af37] hover:bg-[#d4af37] hover:text-black text-xl font-bold">
             INQUIRE via E-TRANSFER
           </button>
         </div>
+
         <!-- Duplicate the div above for additional prints -->
       </div>
     </div>
@@ -44,4 +43,5 @@
       .then(data => document.body.insertAdjacentHTML('beforeend', data));
   </script>
 </body>
+
 </html>
