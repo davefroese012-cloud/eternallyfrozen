@@ -1,5 +1,4 @@
 /* ====================== ETERNALLY FROZEN TATTOO - FULL STYLES.CSS (March 2026) ====================== */
-/* Perfect match for your current files + ice theme + readability */
 
 * {
     box-sizing: border-box;
@@ -11,7 +10,7 @@ body {
     margin: 0;
 }
 
-/* HERO - EXACT MATCH FOR YOUR CURRENT HTML */
+/* HERO - FIXED BLUE HUE + 2X BIGGER HEADSHOT */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -25,17 +24,19 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(5, 15, 45, 0.75), rgba(10, 30, 70, 0.92));
+    background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(5, 5, 25, 0.94));
+    /* much darker, almost no blue — pure gothic */
     z-index: 1;
 }
 
 .hero-logo {
     position: relative;
     z-index: 3;
-    max-height: 260px;
+    max-height: 520px;
+    /* ← doubled from 260px */
     width: auto;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 12px 40px rgba(0, 212, 255, 0.4));
+    margin-bottom: 2.5rem;
+    filter: drop-shadow(0 12px 40px rgba(0, 212, 255, 0.25));
 }
 
 .hero-content {
@@ -91,7 +92,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ABOUT SECTION */
+/* ABOUT SECTION (unchanged) */
 .about-section {
     padding: 4rem 1.5rem;
     max-width: 1024px;
@@ -113,15 +114,16 @@ body {
     }
 
     .hero-logo {
-        max-height: 180px;
+        max-height: 340px;
     }
 
+    /* still bigger on mobile */
     .hero-content {
         padding: 1.5rem 1rem;
     }
 }
 
-/* NAV HEADER - FOR SEPARATE header.html (ice theme) */
+/* NAV HEADER (unchanged) */
 .nav-header {
     position: fixed;
     top: 0;
@@ -145,7 +147,6 @@ body {
 
 .nav-logo {
     max-height: 65px;
-    /* tuned for headshot */
     width: auto;
     border-radius: 8px;
 }
@@ -160,5 +161,4 @@ body {
 
 .nav-links a:hover {
     color: #d4af37;
-    /* gold accent */
 }
