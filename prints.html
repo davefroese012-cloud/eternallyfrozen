@@ -7,46 +7,76 @@
   <title>Prints & Paintings • Eternally Frozen Tattoo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
-  <!-- BLACK FADE TRANSITION (runs immediately) -->
-  <script>
+<!-- SMOOTH BLACK FADE TRANSITION - pure black overlay (cinematic) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let overlay = document.getElementById('page-transition');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'page-transition';
+      document.body.appendChild(overlay);
+    }
+
+    const css = `
+    #page-transition {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 680ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    }
+    #page-transition.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+
+    // Fade FROM black on page load
+    overlay.classList.add('active');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 80);
+
+    // Fade TO black on any internal link click
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
       if (!link) return;
-      const href = link.getAttribute('href');
-      if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
-        e.preventDefault();
-        document.documentElement.classList.add('fade-out');
-        setTimeout(() => {
-          window.location.href = href;
-        }, 125);
-      }
-    }, true);
+      const href = link.getAttribute('href').trim();
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
 
-    window.addEventListener('load', () => {
-      document.documentElement.classList.add('fade-in');
-    });
-  </script>
+      e.preventDefault();
+      overlay.classList.add('active');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 680);
+    }, true);
+  });
+</script>
 </head>
 
 <body class="prints-page">
 
   <!-- Header loads here -->
 
-  <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
-    <div class="max-w-6xl mx-auto px-6">
-      <h1 class="text-5xl sm:text-6xl text-center accent mb-16">PAINTINGS & PRINTS</h1>
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-zinc-950 rounded-3xl overflow-hidden gold-border p-8">
-          <img src="images/portfolio/IMG_3990.webp" class="w-full rounded-2xl">
-          <h3 class="text-3xl mt-8">Pietà Original Print – 11x14"</h3>
-          <p class="text-4xl mt-4">$85</p>
-          <button onclick="alert('Message Chloe on IG @eternallyfrozen.ttt to inquire!')"
-            class="mt-10 w-full py-6 border-4 border-[#d4af37] hover:bg-[#d4af37] hover:text-black text-xl font-bold">
-            INQUIRE via E-TRANSFER
-          </button>
-        </div>
+  <section class="min-h-screen pt-24 pb-20 bg-[#0a0005] flex items-center">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-5xl sm:text-7xl accent mb-8">PRINTS & PAINTINGS</h1>
+      <p class="text-xl mb-16">Limited original prints and paintings by Chloe Froese</p>
 
-        <!-- Duplicate the div above for additional prints -->
+      <div class="bg-black/70 rounded-3xl p-12 gold-border max-w-md mx-auto">
+        <h3 class="text-3xl mb-8">Pietà Original Print – 11×14"</h3>
+        <p class="text-4xl mb-10">$85</p>
+        <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank"
+          class="inline-block px-10 py-6 border-4 border-[#d4af37] text-xl hover:bg-[#d4af37] hover:text-black font-bold">
+          INQUIRE VIA INSTAGRAM
+        </a>
       </div>
     </div>
   </section>

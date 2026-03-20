@@ -1,4 +1,4 @@
-/* ====================== ETERNALLY FROZEN TATTOO - FULL STYLES.CSS (March 2026) ====================== */
+/* ====================== ETERNALLY FROZEN TATTOO - STYLES.CSS ====================== */
 
 * {
     box-sizing: border-box;
@@ -8,9 +8,10 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     padding-top: 100px;
     margin: 0;
+    background: #000000 !important;
 }
 
-/* HERO - 25% SUBTLE BLACK OVERLAY */
+/* HERO */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -89,7 +90,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ABOUT SECTION */
+/* ABOUT */
 .about-section {
     padding: 4rem 1.5rem;
     max-width: 1024px;
@@ -104,7 +105,7 @@ body {
     max-width: 100%;
 }
 
-/* PORTFOLIO - B&W TO COLOR HOVER */
+/* PORTFOLIO */
 .portfolio-grid img {
     filter: grayscale(100%);
     transition: filter 0.4s ease, transform 0.3s ease;
@@ -116,7 +117,7 @@ body {
     transform: scale(1.04);
 }
 
-/* NAV HEADER + GOLD ACTIVE LINK FOR EVERY PAGE */
+/* NAV */
 .nav-header {
     position: fixed;
     top: 0;
@@ -156,7 +157,7 @@ body {
     color: #d4af37;
 }
 
-/* GOLD ACTIVE NAV ON EVERY PAGE */
+/* ACTIVE NAV */
 .home-page .nav-links a[href="index.html"],
 .portfolio-page .nav-links a[href="portfolio.html"],
 .flash-page .nav-links a[href="flash.html"],
@@ -175,10 +176,6 @@ body {
         max-height: 340px;
     }
 
-    .hero-content {
-        padding: 1.5rem 1rem;
-    }
-
     .nav-links a {
         margin-left: 1.2rem;
         font-size: 0.95rem;
@@ -195,25 +192,4 @@ body {
     opacity: 1 !important;
     pointer-events: auto !important;
     z-index: 9999 !important;
-}
-
-/* SMOOTH BLACK FADE IN & OUT - 125ms (pure black, no white flash) */
-html,
-body {
-    transition: opacity 125ms ease-in-out;
-    background: #000000 !important;
-}
-
-html.fade-out {
-    opacity: 0;
-}
-
-html.fade-in {
-    opacity: 1;
-}
-
-/* Fix white bar under header */
-.nav-header {
-    box-shadow: none;
-    border-bottom: none;
 }

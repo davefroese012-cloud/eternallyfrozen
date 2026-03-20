@@ -7,25 +7,58 @@
   <title>Book Now • Eternally Frozen Tattoo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
-      <!-- BLACK FADE TRANSITION (runs immediately) -->
-      <script>
-        document.addEventListener('click', function (e) {
-          const link = e.target.closest('a[href]');
-          if (!link) return;
-          const href = link.getAttribute('href');
-          if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
-            e.preventDefault();
-            document.documentElement.classList.add('fade-out');
-            setTimeout(() => {
-              window.location.href = href;
-            }, 125);
-          }
-        }, true);
+<!-- SMOOTH BLACK FADE TRANSITION - pure black overlay (cinematic) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let overlay = document.getElementById('page-transition');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'page-transition';
+      document.body.appendChild(overlay);
+    }
 
-        window.addEventListener('load', () => {
-          document.documentElement.classList.add('fade-in');
-        });
-      </script>
+    const css = `
+    #page-transition {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 680ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    }
+    #page-transition.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+
+    // Fade FROM black on page load
+    overlay.classList.add('active');
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 80);
+
+    // Fade TO black on any internal link click
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href').trim();
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
+
+      e.preventDefault();
+      overlay.classList.add('active');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 680);
+    }, true);
+  });
+</script>
 </head>
 
 <body class="book-page">
