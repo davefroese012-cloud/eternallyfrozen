@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 
-/* HERO - 25% OPACITY SUBTLE BLACK OVERLAY */
+/* HERO - 25% SUBTLE BLACK OVERLAY */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -116,7 +116,7 @@ body {
     transform: scale(1.04);
 }
 
-/* NAV HEADER + ACTIVE PAGE GOLD */
+/* NAV HEADER + GOLD ACTIVE LINK FOR EVERY PAGE */
 .nav-header {
     position: fixed;
     top: 0;
@@ -156,8 +156,12 @@ body {
     color: #d4af37;
 }
 
-/* GOLD ACTIVE PAGE (just add .flash-page, .prints-page, .book-page etc. to <body> on those pages) */
-.portfolio-page .nav-links a[href="portfolio.html"] {
+/* GOLD ACTIVE NAV ON EVERY PAGE */
+.home-page .nav-links a[href="index.html"],
+.portfolio-page .nav-links a[href="portfolio.html"],
+.flash-page .nav-links a[href="flash.html"],
+.prints-page .nav-links a[href="prints.html"],
+.book-page .nav-links a[href="book.html"] {
     color: #d4af37 !important;
 }
 
@@ -181,7 +185,7 @@ body {
     }
 }
 
-/* GLightbox overrides */
+/* GLightbox fixes */
 .glightbox-container .gbtn {
     pointer-events: auto !important;
 }
