@@ -10,52 +10,44 @@
 
 <!-- SMOOTH BLACK FADE TRANSITION - pure black overlay (cinematic) -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const overlay = document.createElement('div');
-    overlay.id = 'page-transition';
-    document.body.appendChild(overlay);
-
-    const css = `
-    #page-transition {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      z-index: 99999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 720ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
-      will-change: opacity;
-    }
-    #page-transition.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  `;
-    document.head.appendChild(Object.assign(document.createElement('style'), { textContent: css }));
-
-    // Start black
-    overlay.classList.add('active');
-
-    // Wait for header + footer to load, THEN fade in (no flash)
-    Promise.all([
-      fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h)),
-      fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f))
-    ]).then(() => {
-      setTimeout(() => overlay.classList.remove('active'), 180);
-    });
-
-    // Fade to black on internal link clicks
-    document.addEventListener('click', e => {
-      const link = e.target.closest('a[href]');
-      if (!link) return;
-      const href = link.getAttribute('href').trim();
-      if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
-
-      e.preventDefault();
-      overlay.classList.add('active');
-      setTimeout(() => window.location.href = href, 720);
-    }, true);
+  // Pure black overlay (cinematic fade)
+  const overlay = document.createElement('div');
+  overlay.id = 'page-transition';
+  Object.assign(overlay.style, {
+    position: 'fixed',
+    inset: '0',
+    background: '#000',
+    zIndex: '99999',
+    opacity: '1',
+    pointerEvents: 'none',
+    transition: 'opacity 720ms cubic-bezier(0.45, 0.05, 0.55, 0.95)',
+    willChange: 'opacity'
   });
+  document.body.appendChild(overlay);
+
+  // Load header + footer, then fade in everything together
+  Promise.all([
+    fetch('header.html').then(r => r.text()).then(data => document.body.insertAdjacentHTML('afterbegin', data)),
+    fetch('footer.html').then(r => r.text()).then(data => document.body.insertAdjacentHTML('beforeend', data))
+  ]).then(() => {
+    setTimeout(() => {
+      document.body.classList.add('loaded');   // fades content in
+      overlay.style.opacity = '0';             // fades black out
+      setTimeout(() => overlay.remove(), 850);
+    }, 100);
+  });
+
+  // Fade TO black on any internal link click
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href').trim();
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
+
+    e.preventDefault();
+    overlay.style.opacity = '1';
+    setTimeout(() => window.location.href = href, 720);
+  }, true);
 </script>
 </head>
 
