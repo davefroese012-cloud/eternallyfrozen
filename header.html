@@ -13,3 +13,20 @@
     </nav>
   </div>
 </header>
+
+<!-- Fade-to-black transition script (embedded in header so it can't miss) -->
+<script>
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
+      e.preventDefault();
+      document.documentElement.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = href;
+      }, 250);
+    }
+  }, true);
+</script>
