@@ -51,44 +51,60 @@
             class="w-full rounded-xl gold-border"></a>
         <a href="images/portfolio/IMG_3184.webp" class="glightbox"><img src="images/portfolio/IMG_3184.webp" alt=""
             class="w-full rounded-xl gold-border"></a>
-        <!-- Add any extra portfolio images you have here in the same format -->
+        <!-- Add any extra images here in the exact same format -->
       </div>
     </div>
   </section>
 
-<!-- ADJUSTABLE FADE SCRIPT - change these two numbers only -->
-<script>
-  // === TIMINGS YOU CAN CHANGE ===
-  const FADE_DURATION = 800;      // ← Fade animation speed (ms). 500 = fast, 800 = slow & cinematic
-  const BLACK_HOLD_ON_LOAD = 380; // ← How long the black screen stays before fading IN on a new page
+  <!-- UPDATED FADE SCRIPT with GLightbox protection + timings -->
+  <script>
+    // === TIMINGS YOU CAN CHANGE ===
+    const FADE_DURATION = 680;      // fade speed in ms (500 = fast, 800 = cinematic)
+    const BLACK_HOLD_ON_LOAD = 380; // how long black stays before fading in
 
-  // (No need to touch anything below here)
-  const overlay = document.createElement('div');
-  overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:99999;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
-  document.body.appendChild(overlay);
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:99999;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
+    document.body.appendChild(overlay);
 
-  // Background load header/footer
-  fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h));
-  fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f));
+    // Load header/footer
+    fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h));
+    fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f));
 
-  // Fade FROM black on page load
-  setTimeout(() => {
-    overlay.style.opacity = '0';
-    setTimeout(() => overlay.remove(), FADE_DURATION + 50);
-  }, BLACK_HOLD_ON_LOAD);
+    // Fade from black on load
+    setTimeout(() => {
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), FADE_DURATION + 50);
+    }, BLACK_HOLD_ON_LOAD);
 
-  // Fade TO black on any internal link click
-  document.addEventListener('click', e => {
-    const link = e.target.closest('a[href]');
-    if (!link) return;
-    const href = link.getAttribute('href').trim();
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
+    // Fade to black on normal links (SKIP glightbox images!)
+    document.addEventListener('click', e => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
 
-    e.preventDefault();
-    overlay.style.opacity = '1';
-    setTimeout(() => location.href = href, FADE_DURATION);
-  });
-</script>
+      // ←←← THIS IS THE FIX ←←←
+      if (link.classList.contains('glightbox')) return;   // let GLightbox handle its own clicks
+
+      const href = link.getAttribute('href').trim();
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
+
+      e.preventDefault();
+      overlay.style.opacity = '1';
+      setTimeout(() => location.href = href, FADE_DURATION);
+    });
+
+    // Proper GLightbox initialization (runs after everything is loaded)
+    setTimeout(() => {
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          loop: true,
+          closeOnOutsideClick: true,
+          zoomable: true
+        });
+      }
+    }, 200);
+  </script>
 </body>
 
 </html>
