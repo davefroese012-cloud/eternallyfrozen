@@ -172,3 +172,24 @@ body {
     transform: scale(1.03);
     /* subtle lift like the example */
 }
+
+/* Lightbox overrides for reliable arrows & close */
+.lb-container .lb-nav a.lb-prev,
+.lb-container .lb-nav a.lb-next {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+}
+
+.lb-outerContainer {
+    pointer-events: auto !important;
+}
+
+.lb-dataContainer {
+    pointer-events: none !important;
+    /* prevents close on caption click */
+}
+
+.lb-close {
+    pointer-events: auto !important;
+}
