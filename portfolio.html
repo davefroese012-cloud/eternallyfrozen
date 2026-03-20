@@ -7,6 +7,8 @@
   <title>Portfolio • Eternally Frozen Tattoo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- GLightbox - self-contained so it cannot break -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3/dist/css/glightbox.min.css">
   <script src="https://cdn.jsdelivr.net/npm/glightbox@3/dist/js/glightbox.min.js"></script>
 </head>
@@ -56,6 +58,7 @@
     </div>
   </section>
 
+  <!-- FINAL RELIABLE SCRIPT - fade + perfect GLightbox (desktop + mobile swipe) -->
   <script>
     const FADE_DURATION = 680;
     const BLACK_HOLD_ON_LOAD = 380;
@@ -64,20 +67,25 @@
     overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:10;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
     document.body.appendChild(overlay);
 
+    // Load header/footer
     Promise.all([
       fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h)),
       fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f))
     ]).then(() => {
       const hamburger = document.getElementById('hamburger');
       const navLinks = document.getElementById('nav-links');
-      if (hamburger && navLinks) hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+      }
     });
 
+    // Fade from black
     setTimeout(() => {
       overlay.style.opacity = '0';
       setTimeout(() => overlay.remove(), FADE_DURATION + 50);
     }, BLACK_HOLD_ON_LOAD);
 
+    // Fade to black on normal links only
     document.addEventListener('click', e => {
       const link = e.target.closest('a[href]');
       if (!link || link.classList.contains('glightbox')) return;
@@ -86,6 +94,23 @@
       e.preventDefault();
       overlay.style.opacity = '1';
       setTimeout(() => location.href = href, FADE_DURATION);
+    });
+
+    // GLightbox - robust init for both desktop and mobile swipe
+    window.addEventListener('load', () => {
+      if (typeof GLightbox !== 'undefined') {
+        GLightbox({
+          selector: '.glightbox',
+          touchNavigation: true,
+          loop: true,
+          closeOnOutsideClick: true,
+          zoomable: true,
+          draggable: true,
+          keyboardNavigation: true,
+          openEffect: 'fade',
+          closeEffect: 'fade'
+        });
+      }
     });
   </script>
 </body>
