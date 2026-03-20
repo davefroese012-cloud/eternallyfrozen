@@ -197,7 +197,7 @@ body {
     z-index: 9999 !important;
 }
 
-/* STRONG PAGE TRANSITION - FADE TO BLACK + NO WHITE FLASH */
+/* STRONG PAGE FADE TRANSITION (250ms - 25% faster than Atticus) */
 html {
     transition: opacity 250ms ease-in-out;
     background: #000;
