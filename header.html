@@ -2,7 +2,7 @@
 <header class="nav-header">
   <div class="nav-container">
     <a href="index.html" class="logo-link">
-      <img src="images/logo/Rabbit-Logo.webp" alt="Eternally Frozen Tattoo" class="nav-logo">
+      <img src="images/logo/rabbit-logo.webp" alt="Eternally Frozen Tattoo" class="nav-logo">
     </a>
     <nav class="nav-links">
       <a href="index.html">Home</a>
@@ -13,3 +13,22 @@
     </nav>
   </div>
 </header>
+
+<!-- Fade-to-black transition script (runs as soon as header loads) -->
+<script>
+  // Smooth fade (250ms) - no white flash
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
+      e.preventDefault();
+      document.documentElement.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 250);
+    }
+  }, true);
+</script>
