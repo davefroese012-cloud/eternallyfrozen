@@ -159,3 +159,16 @@ body {
 .nav-links a:hover {
     color: #d4af37;
 }
+
+/* ====================== PORTFOLIO - B&W TO COLOR HOVER (exact Atticus style) ====================== */
+.portfolio-grid img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+    cursor: pointer;
+}
+
+.portfolio-grid img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+    /* subtle lift like the example */
+}
