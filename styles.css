@@ -1,3 +1,5 @@
+/* ====================== ETERNALLY FROZEN TATTOO - STYLES.CSS ====================== */
+
 * {
     box-sizing: border-box;
 }
@@ -9,7 +11,7 @@ body {
     background: #000000 !important;
 }
 
-/* HERO - now perfectly mobile-friendly */
+/* HERO - mobile-first fixes */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -23,7 +25,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 1;
 }
 
@@ -43,37 +45,6 @@ body {
     max-width: 960px;
 }
 
-/* MOBILE HERO FIXES */
-@media (max-width: 640px) {
-    body {
-        padding-top: 80px;
-    }
-
-    .hero {
-        min-height: 65vh;
-    }
-
-    .hero-logo {
-        max-height: 220px;
-        margin-bottom: 1rem;
-    }
-
-    .hero-title {
-        font-size: clamp(2.4rem, 11vw, 4rem);
-    }
-
-    .hero-subtitle,
-    .hero-location {
-        font-size: clamp(1.05rem, 5vw, 1.4rem);
-    }
-
-    .btn-book {
-        padding: 1rem 2.5rem;
-        font-size: 1.15rem;
-    }
-}
-
-/* REST OF STYLES (unchanged except nav) */
 .hero-title {
     font-size: clamp(3.2rem, 9vw, 7rem);
     font-weight: 900;
@@ -119,29 +90,35 @@ body {
     transform: scale(1.05);
 }
 
-.about-section {
-    padding: 4rem 1.5rem;
-    max-width: 1024px;
-    margin: 0 auto;
-    text-align: center;
-}
+/* MOBILE HERO - no more cut-offs */
+@media (max-width: 640px) {
+    body {
+        padding-top: 80px;
+    }
 
-.about-section img {
-    margin-bottom: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-    max-width: 100%;
-}
+    .hero {
+        min-height: 68vh;
+    }
 
-.portfolio-grid img {
-    filter: grayscale(100%);
-    transition: filter 0.4s ease, transform 0.3s ease;
-    cursor: pointer;
-}
+    .hero-logo {
+        display: none;
+    }
 
-.portfolio-grid img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.04);
+    /* hides the cut-off headshot on phones */
+    .hero-title {
+        font-size: clamp(2.4rem, 11vw, 4rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle,
+    .hero-location {
+        font-size: clamp(1.05rem, 5vw, 1.35rem);
+    }
+
+    .btn-book {
+        padding: 1rem 2.8rem;
+        font-size: 1.2rem;
+    }
 }
 
 /* NAV + HAMBURGER */
@@ -179,7 +156,6 @@ body {
     font-size: 2rem;
     color: #ffffff;
     cursor: pointer;
-    padding: 0;
 }
 
 .nav-links {
@@ -196,6 +172,15 @@ body {
 
 .nav-links a:hover {
     color: #d4af37;
+}
+
+/* ACTIVE PAGE GOLD HIGHLIGHT (fixed) */
+.home-page .nav-links a[href="index.html"],
+.portfolio-page .nav-links a[href="portfolio.html"],
+.flash-page .nav-links a[href="flash.html"],
+.prints-page .nav-links a[href="prints.html"],
+.book-page .nav-links a[href="book.html"] {
+    color: #d4af37 !important;
 }
 
 /* MOBILE NAV */
@@ -222,8 +207,37 @@ body {
     }
 }
 
-.about-section,
-.portfolio-grid,
-.glightbox fixes {
-    /* same as before */
+/* Other sections */
+.about-section {
+    padding: 4rem 1.5rem;
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-section img {
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    max-width: 100%;
+}
+
+.portfolio-grid img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.portfolio-grid img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+}
+
+/* GLightbox */
+.glightbox-container .gbtn,
+.glightbox-container .gnext,
+.glightbox-container .gprev {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    z-index: 9999 !important;
 }
