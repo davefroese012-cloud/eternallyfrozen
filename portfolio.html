@@ -51,19 +51,20 @@
             class="w-full rounded-xl gold-border"></a>
         <a href="images/portfolio/IMG_3184.webp" class="glightbox"><img src="images/portfolio/IMG_3184.webp" alt=""
             class="w-full rounded-xl gold-border"></a>
-        <!-- Add any extra images here in the exact same format -->
+        <!-- Add any extra images here in the same format -->
       </div>
     </div>
   </section>
 
-  <!-- UPDATED FADE SCRIPT with GLightbox protection + timings -->
+  <!-- FIXED FADE + PERFECT GLightbox SCRIPT -->
   <script>
-    // === TIMINGS YOU CAN CHANGE ===
-    const FADE_DURATION = 680;      // fade speed in ms (500 = fast, 800 = cinematic)
-    const BLACK_HOLD_ON_LOAD = 380; // how long black stays before fading in
+    // === TIMINGS (change these anytime) ===
+    const FADE_DURATION = 680;
+    const BLACK_HOLD_ON_LOAD = 380;
 
+    // Fade overlay (z-index lowered so GLightbox sits on top)
     const overlay = document.createElement('div');
-    overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:99999;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
+    overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:9999;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
     document.body.appendChild(overlay);
 
     // Load header/footer
@@ -76,13 +77,11 @@
       setTimeout(() => overlay.remove(), FADE_DURATION + 50);
     }, BLACK_HOLD_ON_LOAD);
 
-    // Fade to black on normal links (SKIP glightbox images!)
+    // Fade to black on normal nav links only
     document.addEventListener('click', e => {
       const link = e.target.closest('a[href]');
       if (!link) return;
-
-      // ←←← THIS IS THE FIX ←←←
-      if (link.classList.contains('glightbox')) return;   // let GLightbox handle its own clicks
+      if (link.classList.contains('glightbox')) return;   // ← let GLightbox handle these
 
       const href = link.getAttribute('href').trim();
       if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
@@ -92,18 +91,22 @@
       setTimeout(() => location.href = href, FADE_DURATION);
     });
 
-    // Proper GLightbox initialization (runs after everything is loaded)
-    setTimeout(() => {
+    // ROBUST GLightbox initialization (runs after everything loads)
+    window.addEventListener('load', () => {
       if (typeof GLightbox !== 'undefined') {
         GLightbox({
           selector: '.glightbox',
           touchNavigation: true,
           loop: true,
           closeOnOutsideClick: true,
-          zoomable: true
+          zoomable: true,
+          draggable: true,
+          keyboardNavigation: true,
+          openEffect: 'fade',
+          closeEffect: 'fade'
         });
       }
-    }, 200);
+    });
   </script>
 </body>
 
