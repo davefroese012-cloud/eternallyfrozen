@@ -25,7 +25,6 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.25);
-    /* subtle veil - no blue */
     z-index: 1;
 }
 
@@ -33,7 +32,6 @@ body {
     position: relative;
     z-index: 3;
     max-height: 520px;
-    /* doubled size for Chloe headshot */
     width: auto;
     margin-bottom: 2.5rem;
 }
@@ -118,7 +116,7 @@ body {
     transform: scale(1.04);
 }
 
-/* NAV HEADER */
+/* NAV HEADER + ACTIVE PAGE GOLD */
 .nav-header {
     position: fixed;
     top: 0;
@@ -158,7 +156,12 @@ body {
     color: #d4af37;
 }
 
-/* MOBILE ADJUSTMENTS */
+/* GOLD ACTIVE PAGE (just add .flash-page, .prints-page, .book-page etc. to <body> on those pages) */
+.portfolio-page .nav-links a[href="portfolio.html"] {
+    color: #d4af37 !important;
+}
+
+/* MOBILE */
 @media (max-width: 640px) {
     body {
         padding-top: 90px;
@@ -178,7 +181,7 @@ body {
     }
 }
 
-/* GLightbox overrides for reliable arrows & close */
+/* GLightbox overrides */
 .glightbox-container .gbtn {
     pointer-events: auto !important;
 }
@@ -188,16 +191,4 @@ body {
     opacity: 1 !important;
     pointer-events: auto !important;
     z-index: 9999 !important;
-}
-
-.glightbox-container .goverlay {
-    pointer-events: auto !important;
-}
-
-.glightbox-container .gcontainer {
-    pointer-events: none !important;
-}
-
-.glightbox-container .gslide-desc {
-    pointer-events: none !important;
 }
