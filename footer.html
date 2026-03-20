@@ -3,4 +3,33 @@
   <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<!-- GLightbox & Page Fade Script -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3/dist/js/glightbox.min.js"></script>
+<script>
+  // Initialize GLightbox
+  document.addEventListener('DOMContentLoaded', () => {
+    GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      closeOnOutsideClick: true,
+      zoomable: true
+    });
+  });
+
+  // Smooth fade-to-black transition on internal links
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
+      e.preventDefault();
+      document.documentElement.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 300); // matches the CSS fade speed
+    }
+  });
+</script>

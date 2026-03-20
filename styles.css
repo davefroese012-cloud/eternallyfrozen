@@ -196,3 +196,12 @@ body {
     pointer-events: auto !important;
     z-index: 9999 !important;
 }
+
+/* SMOOTH PAGE TRANSITION - FADE TO BLACK (300ms - 25% faster than Atticus) */
+html {
+    transition: opacity 300ms ease-in-out;
+}
+
+html.fade-out {
+    opacity: 0;
+}
