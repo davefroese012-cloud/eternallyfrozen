@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Fade-to-black transition script embedded directly in the page (this is the fix) -->
+  <!-- BLACK FADE TRANSITION (runs immediately) -->
   <script>
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
@@ -19,31 +19,14 @@
         document.documentElement.classList.add('fade-out');
         setTimeout(() => {
           window.location.href = href;
-        }, 250);
+        }, 125);
       }
     }, true);
-  </script>
-    <!-- Fade-to-black transition (runs immediately on every page) -->
-    <script>
-      // Fade out on any internal nav click
-      document.addEventListener('click', function (e) {
-        const link = e.target.closest('a[href]');
-        if (!link) return;
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
-          e.preventDefault();
-          document.documentElement.classList.add('fade-out');
-          setTimeout(() => {
-            window.location.href = href;
-          }, 250);
-        }
-      }, true);
 
-      // Fade in from black on every page load
-      window.addEventListener('load', () => {
-        document.documentElement.classList.add('fade-in');
-      });
-    </script>
+    window.addEventListener('load', () => {
+      document.documentElement.classList.add('fade-in');
+    });
+  </script>
 </head>
 
 <body class="flash-page">

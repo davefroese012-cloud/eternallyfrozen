@@ -198,8 +198,10 @@ body {
 }
 
 /* SMOOTH BLACK FADE IN & OUT - 125ms (pure black, no white flash) */
-html {
+html,
+body {
     transition: opacity 125ms ease-in-out;
+    background: #000000 !important;
 }
 
 html.fade-out {
@@ -208,11 +210,6 @@ html.fade-out {
 
 html.fade-in {
     opacity: 1;
-}
-
-html,
-body {
-    background: #000000 !important;
 }
 
 /* Fix white bar under header */
