@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 
-/* HERO - FIXED BLUE HUE + 2X BIGGER HEADSHOT */
+/* HERO - NO BLUE HUE + NO HIGHLIGHT ON HEADSHOT */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -24,8 +24,8 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.82), rgba(5, 5, 25, 0.94));
-    /* much darker, almost no blue — pure gothic */
+    background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.98));
+    /* pure black - no blue at all */
     z-index: 1;
 }
 
@@ -33,10 +33,10 @@ body {
     position: relative;
     z-index: 3;
     max-height: 520px;
-    /* ← doubled from 260px */
+    /* twice the size as requested */
     width: auto;
     margin-bottom: 2.5rem;
-    filter: drop-shadow(0 12px 40px rgba(0, 212, 255, 0.25));
+    /* highlight/glow removed completely */
 }
 
 .hero-content {
@@ -92,7 +92,7 @@ body {
     transform: scale(1.05);
 }
 
-/* ABOUT SECTION (unchanged) */
+/* ABOUT SECTION */
 .about-section {
     padding: 4rem 1.5rem;
     max-width: 1024px;
@@ -117,13 +117,12 @@ body {
         max-height: 340px;
     }
 
-    /* still bigger on mobile */
     .hero-content {
         padding: 1.5rem 1rem;
     }
 }
 
-/* NAV HEADER (unchanged) */
+/* NAV HEADER */
 .nav-header {
     position: fixed;
     top: 0;
