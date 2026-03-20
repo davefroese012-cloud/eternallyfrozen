@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- FADE SCRIPT v6 - BLACK TRANSITION - FIXED March 20 2026 - FULL VERSION -->
+  <!-- BLACK FADE TRANSITION - Embedded in head (this is the reliable fix) -->
   <script>
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
@@ -31,7 +31,21 @@
 
 <body class="flash-page">
 
-  <!-- Header loads here -->
+  <!-- Embedded Header (no more fetch - this fixes the fade timing) -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo/rabbit-logo.webp" alt="Eternally Frozen Tattoo" class="nav-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="flash.html">Flash</a>
+        <a href="prints.html">Prints</a>
+        <a href="book.html">Book Now</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
     <div class="max-w-6xl mx-auto px-6">
@@ -60,9 +74,6 @@
   <!-- Footer loads here -->
 
   <script>
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => document.body.insertAdjacentHTML('afterbegin', data));
     fetch('footer.html')
       .then(response => response.text())
       .then(data => document.body.insertAdjacentHTML('beforeend', data));
