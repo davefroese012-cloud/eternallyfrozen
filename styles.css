@@ -197,20 +197,22 @@ body {
     z-index: 9999 !important;
 }
 
-/* SMOOTH BLACK FADE IN & OUT (250ms - 25% faster than Atticus) */
+/* SMOOTH BLACK FADE IN & OUT - 125ms (50% faster) + pure black */
 html {
-    transition: opacity 250ms ease-in-out;
-    background: #000;
-    opacity: 0;
-    /* starts black */
+    transition: opacity 125ms ease-in-out;
+    background: #000000 !important;
 }
 
-html.fade-in {
-    opacity: 1;
+body {
+    background: #000000 !important;
 }
 
 html.fade-out {
     opacity: 0;
+}
+
+html.fade-in {
+    opacity: 1;
 }
 
 /* Fix white bar under header */
