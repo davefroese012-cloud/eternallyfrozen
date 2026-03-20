@@ -10,61 +10,75 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3/dist/css/glightbox.min.css">
 </head>
 
-<body class="portfolio-page" style="opacity: 0;">
+<body class="portfolio-page">
 
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
     <div class="max-w-7xl mx-auto px-6">
       <div class="portfolio-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        <!-- All your portfolio images here (same as before) -->
         <a href="images/portfolio/2CEAC040-C4DC-4D58-8560-055B926B8455.webp" class="glightbox"><img
             src="images/portfolio/2CEAC040-C4DC-4D58-8560-055B926B8455.webp" alt=""
             class="w-full rounded-xl gold-border"></a>
         <a href="images/portfolio/2D40FBC6-7DE1-4220-9A91-90CFC5C00007.webp" class="glightbox"><img
             src="images/portfolio/2D40FBC6-7DE1-4220-9A91-90CFC5C00007.webp" alt=""
             class="w-full rounded-xl gold-border"></a>
-        <!-- ... add the rest of your images exactly as they were ... -->
+        <a href="images/portfolio/3EEBCC13-B48C-4D69-8276-650A99114D78.webp" class="glightbox"><img
+            src="images/portfolio/3EEBCC13-B48C-4D69-8276-650A99114D78.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" class="glightbox"><img
+            src="images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/6690F77D-EF2B-4E4D-BA73-70556C1705BB.webp" class="glightbox"><img
+            src="images/portfolio/6690F77D-EF2B-4E4D-BA73-70556C1705BB.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/6D4E424D-EC51-40FF-8140-C8F29ACBEECA.webp" class="glightbox"><img
+            src="images/portfolio/6D4E424D-EC51-40FF-8140-C8F29ACBEECA.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/78F48591-8536-4262-9B9C-51E31A7395F2.webp" class="glightbox"><img
+            src="images/portfolio/78F48591-8536-4262-9B9C-51E31A7395F2.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/9865FF3E-1B59-4759-9DD2-BE19047004CB.webp" class="glightbox"><img
+            src="images/portfolio/9865FF3E-1B59-4759-9DD2-BE19047004CB.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/B9A3F492-17A9-4165-9465-DABBD7C9A4E9.webp" class="glightbox"><img
+            src="images/portfolio/B9A3F492-17A9-4165-9465-DABBD7C9A4E9.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/CB104722-DC41-4AAE-8471-6AA2D01147D7.webp" class="glightbox"><img
+            src="images/portfolio/CB104722-DC41-4AAE-8471-6AA2D01147D7.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/IMG_3181.webp" class="glightbox"><img src="images/portfolio/IMG_3181.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/IMG_3182.webp" class="glightbox"><img src="images/portfolio/IMG_3182.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <a href="images/portfolio/IMG_3184.webp" class="glightbox"><img src="images/portfolio/IMG_3184.webp" alt=""
+            class="w-full rounded-xl gold-border"></a>
+        <!-- Add any extra portfolio images you have here in the same format -->
       </div>
     </div>
   </section>
 
-  <!-- SAFE DIAGNOSTIC FADE SCRIPT -->
+  <!-- FINAL BULLETPROOF FADE SCRIPT -->
   <script>
-    console.log('=== FADE SCRIPT STARTED ===');
     const overlay = document.createElement('div');
-    overlay.id = 'page-transition';
-    Object.assign(overlay.style, {
-      position: 'fixed', inset: '0', background: '#000', zIndex: '99999',
-      opacity: '1', pointerEvents: 'none',
-      transition: 'opacity 720ms cubic-bezier(0.45, 0.05, 0.55, 0.95)',
-      willChange: 'opacity'
-    });
+    overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:99999;opacity:1;transition:opacity 680ms cubic-bezier(0.45,0.05,0.55,0.95);`;
     document.body.appendChild(overlay);
 
+    fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h));
+    fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f));
+
     setTimeout(() => {
-      console.log('Forcing page reveal (800ms timeout)');
-      document.body.classList.add('loaded');
       overlay.style.opacity = '0';
-      setTimeout(() => {
-        overlay.remove();
-        console.log('Overlay removed - page fully visible');
-      }, 850);
-    }, 800);
+      setTimeout(() => overlay.remove(), 700);
+    }, 380);
 
-    Promise.all([
-      fetch('header.html').then(r => r.text()).then(data => { document.body.insertAdjacentHTML('afterbegin', data); console.log('Header loaded'); }),
-      fetch('footer.html').then(r => r.text()).then(data => { document.body.insertAdjacentHTML('beforeend', data); console.log('Footer loaded'); })
-    ]).catch(err => console.error('Fetch error:', err));
-
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', e => {
       const link = e.target.closest('a[href]');
       if (!link) return;
       const href = link.getAttribute('href').trim();
       if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
-
       e.preventDefault();
       overlay.style.opacity = '1';
-      setTimeout(() => window.location.href = href, 720);
-    }, true);
+      setTimeout(() => location.href = href, 680);
+    });
   </script>
 </body>
 
