@@ -197,11 +197,18 @@ body {
     z-index: 9999 !important;
 }
 
-/* SMOOTH PAGE TRANSITION - FADE TO BLACK (250ms) */
+/* STRONG PAGE TRANSITION - FADE TO BLACK + NO WHITE FLASH */
 html {
     transition: opacity 250ms ease-in-out;
+    background: #000;
 }
 
 html.fade-out {
     opacity: 0;
+}
+
+/* Fix white bar under header */
+.nav-header {
+    box-shadow: none;
+    border-bottom: none;
 }
