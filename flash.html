@@ -11,6 +11,22 @@
 
 <body class="flash-page" style="opacity: 0;">
 
+  <!-- Embedded Header (already in your current file) -->
+  <header class="nav-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo/rabbit-logo.webp" alt="Eternally Frozen Tattoo" class="nav-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="flash.html">Flash</a>
+        <a href="prints.html">Prints</a>
+        <a href="book.html">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005]">
     <div class="max-w-6xl mx-auto px-6">
       <h1 class="text-5xl sm:text-6xl text-center accent mb-16">CURRENT FLASH</h1>
@@ -35,8 +51,9 @@
     </div>
   </section>
 
-  <!-- FADE SCRIPT -->
+  <!-- SAFE DIAGNOSTIC FADE SCRIPT (this fixes the black screen) -->
   <script>
+    console.log('=== FADE SCRIPT STARTED ===');
     const overlay = document.createElement('div');
     overlay.id = 'page-transition';
     Object.assign(overlay.style, {
@@ -47,20 +64,18 @@
     });
     document.body.appendChild(overlay);
 
-    Promise.all([
-      fetch('header.html').then(r => r.text()).then(data => document.body.insertAdjacentHTML('afterbegin', data)),
-      fetch('footer.html').then(r => r.text()).then(data => document.body.insertAdjacentHTML('beforeend', data))
-    ]).then(() => {
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 850);
-      }, 100);
-    }).catch(() => {
+    // FORCE REVEAL AFTER 800ms - page can never stay black
+    setTimeout(() => {
+      console.log('Forcing page reveal (800ms timeout)');
       document.body.classList.add('loaded');
       overlay.style.opacity = '0';
-    });
+      setTimeout(() => {
+        overlay.remove();
+        console.log('Overlay removed - page fully visible');
+      }, 850);
+    }, 800);
 
+    // Click handler for smooth fade to black on navigation
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
       if (!link) return;
