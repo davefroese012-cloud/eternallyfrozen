@@ -3,10 +3,9 @@
   <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
 </footer>
 
-<!-- GLightbox & Smooth Black Fade -->
+<!-- GLightbox only -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox@3/dist/js/glightbox.min.js"></script>
 <script>
-  // GLightbox
   document.addEventListener('DOMContentLoaded', () => {
     GLightbox({
       selector: '.glightbox',
@@ -15,24 +14,5 @@
       closeOnOutsideClick: true,
       zoomable: true
     });
-  });
-
-  // Fade-out on nav click
-  document.addEventListener('click', function (e) {
-    const link = e.target.closest('a[href]');
-    if (!link) return;
-    const href = link.getAttribute('href');
-    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
-      e.preventDefault();
-      document.documentElement.classList.add('fade-out');
-      setTimeout(() => {
-        window.location.href = href;
-      }, 250);
-    }
-  }, true);
-
-  // Fade-in from black on every page load
-  window.addEventListener('load', () => {
-    document.documentElement.classList.add('fade-in');
   });
 </script>
