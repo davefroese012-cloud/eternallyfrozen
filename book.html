@@ -9,42 +9,42 @@
   <link rel="stylesheet" href="styles.css">
 <!-- SMOOTH BLACK FADE TRANSITION - pure black overlay (cinematic) -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    let overlay = document.getElementById('page-transition');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.id = 'page-transition';
-      document.body.appendChild(overlay);
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.createElement('div');
+    overlay.id = 'page-transition';
+    document.body.appendChild(overlay);
 
     const css = `
     #page-transition {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      inset: 0;
       background: #000;
       z-index: 99999;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 680ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      transition: opacity 720ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+      will-change: opacity;
     }
     #page-transition.active {
       opacity: 1;
       pointer-events: auto;
     }
   `;
-    const style = document.createElement('style');
-    style.textContent = css;
-    document.head.appendChild(style);
+    document.head.appendChild(Object.assign(document.createElement('style'), { textContent: css }));
 
-    // Fade FROM black on page load
+    // Start black
     overlay.classList.add('active');
-    setTimeout(() => {
-      overlay.classList.remove('active');
-    }, 80);
 
-    // Fade TO black on any internal link click
-    document.addEventListener('click', function (e) {
+    // Wait for header + footer to load, THEN fade in (no flash)
+    Promise.all([
+      fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h)),
+      fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f))
+    ]).then(() => {
+      setTimeout(() => overlay.classList.remove('active'), 180);
+    });
+
+    // Fade to black on internal link clicks
+    document.addEventListener('click', e => {
       const link = e.target.closest('a[href]');
       if (!link) return;
       const href = link.getAttribute('href').trim();
@@ -52,10 +52,7 @@
 
       e.preventDefault();
       overlay.classList.add('active');
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 680);
+      setTimeout(() => window.location.href = href, 720);
     }, true);
   });
 </script>
