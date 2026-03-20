@@ -10,7 +10,7 @@ body {
     margin: 0;
 }
 
-/* HERO - SUBTLE 25% OPACITY OVERLAY */
+/* HERO - 25% OPACITY SUBTLE BLACK OVERLAY */
 .hero {
     position: relative;
     min-height: 85vh;
@@ -25,7 +25,7 @@ body {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.25);
-    /* pure black at 25% opacity - light veil only */
+    /* subtle veil - no blue */
     z-index: 1;
 }
 
@@ -33,6 +33,7 @@ body {
     position: relative;
     z-index: 3;
     max-height: 520px;
+    /* doubled size for Chloe headshot */
     width: auto;
     margin-bottom: 2.5rem;
 }
@@ -105,19 +106,16 @@ body {
     max-width: 100%;
 }
 
-/* MOBILE */
-@media (max-width: 640px) {
-    body {
-        padding-top: 90px;
-    }
+/* PORTFOLIO - B&W TO COLOR HOVER */
+.portfolio-grid img {
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.3s ease;
+    cursor: pointer;
+}
 
-    .hero-logo {
-        max-height: 340px;
-    }
-
-    .hero-content {
-        padding: 1.5rem 1rem;
-    }
+.portfolio-grid img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.04);
 }
 
 /* NAV HEADER */
@@ -160,36 +158,46 @@ body {
     color: #d4af37;
 }
 
-/* ====================== PORTFOLIO - B&W TO COLOR HOVER (exact Atticus style) ====================== */
-.portfolio-grid img {
-    filter: grayscale(100%);
-    transition: filter 0.4s ease;
-    cursor: pointer;
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 640px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .hero-logo {
+        max-height: 340px;
+    }
+
+    .hero-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-links a {
+        margin-left: 1.2rem;
+        font-size: 0.95rem;
+    }
 }
 
-.portfolio-grid img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.03);
-    /* subtle lift like the example */
+/* GLightbox overrides for reliable arrows & close */
+.glightbox-container .gbtn {
+    pointer-events: auto !important;
 }
 
-/* Lightbox overrides for reliable arrows & close */
-.lb-container .lb-nav a.lb-prev,
-.lb-container .lb-nav a.lb-next {
+.glightbox-container .gnext,
+.glightbox-container .gprev {
     opacity: 1 !important;
     pointer-events: auto !important;
     z-index: 9999 !important;
 }
 
-.lb-outerContainer {
+.glightbox-container .goverlay {
     pointer-events: auto !important;
 }
 
-.lb-dataContainer {
+.glightbox-container .gcontainer {
     pointer-events: none !important;
-    /* prevents close on caption click */
 }
 
-.lb-close {
-    pointer-events: auto !important;
+.glightbox-container .gslide-desc {
+    pointer-events: none !important;
 }
