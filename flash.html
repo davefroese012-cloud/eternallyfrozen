@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
 
-  <!-- BLACK FADE TRANSITION (runs immediately) -->
+  <!-- BLACK FADE TRANSITION (embedded in head - this is the fix) -->
   <script>
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
@@ -39,7 +39,6 @@
       <p class="text-center text-xl mb-12">Reserve with e-transfer deposit • More added monthly</p>
 
       <div class="grid md:grid-cols-3 gap-10">
-        <!-- Example flash card – duplicate this div for each design -->
         <div class="flash-card bg-zinc-950 rounded-3xl overflow-hidden gold-border">
           <img src="images/portfolio/57D5DF8B-57DD-4B3B-A4A0-60C065132A0B.webp" class="w-full h-80 object-cover">
           <div class="p-8">
@@ -54,8 +53,6 @@
             </button>
           </div>
         </div>
-
-        <!-- Add more cards here by copying the div above -->
       </div>
     </div>
   </section>
