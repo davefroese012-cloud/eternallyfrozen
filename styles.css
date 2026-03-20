@@ -197,7 +197,7 @@ body {
     z-index: 9999 !important;
 }
 
-/* STRONG PAGE FADE TRANSITION (250ms - 25% faster than Atticus) */
+/* SMOOTH BLACK FADE IN AND OUT (250ms - 25% faster than Atticus) */
 html {
     transition: opacity 250ms ease-in-out;
     background: #000;
@@ -205,6 +205,10 @@ html {
 
 html.fade-out {
     opacity: 0;
+}
+
+html.fade-in {
+    opacity: 1;
 }
 
 /* Fix white bar under header */
