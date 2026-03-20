@@ -11,8 +11,6 @@
 
 <body class="prints-page" style="opacity: 0;">
 
-  <!-- Header and footer will load here -->
-
   <section class="min-h-screen pt-24 pb-20 bg-[#0a0005] flex items-center">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h1 class="text-5xl sm:text-7xl accent mb-8">PRINTS & PAINTINGS</h1>
@@ -29,17 +27,13 @@
     </div>
   </section>
 
-  <!-- NEW RELIABLE FADE SCRIPT -->
+  <!-- FADE SCRIPT -->
   <script>
     const overlay = document.createElement('div');
     overlay.id = 'page-transition';
     Object.assign(overlay.style, {
-      position: 'fixed',
-      inset: '0',
-      background: '#000',
-      zIndex: '99999',
-      opacity: '1',
-      pointerEvents: 'none',
+      position: 'fixed', inset: '0', background: '#000', zIndex: '99999',
+      opacity: '1', pointerEvents: 'none',
       transition: 'opacity 720ms cubic-bezier(0.45, 0.05, 0.55, 0.95)',
       willChange: 'opacity'
     });
@@ -53,15 +47,12 @@
         document.body.classList.add('loaded');
         overlay.style.opacity = '0';
         setTimeout(() => overlay.remove(), 850);
-      }, 80);
+      }, 100);
     }).catch(() => {
-      // Fallback if anything fails (prevents stuck black)
       document.body.classList.add('loaded');
       overlay.style.opacity = '0';
-      setTimeout(() => overlay.remove(), 400);
     });
 
-    // Fade TO black on link clicks
     document.addEventListener('click', function (e) {
       const link = e.target.closest('a[href]');
       if (!link) return;
