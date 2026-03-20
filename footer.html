@@ -3,7 +3,7 @@
   <p class="text-xs text-gray-400 mt-2">Proudly tattooing at Dead Man Worx • @eternallyfrozen.ttt</p>
 </footer>
 
-<!-- GLightbox & Strong Fade Transition -->
+<!-- GLightbox & Fade Transition -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox@3/dist/js/glightbox.min.js"></script>
 <script>
   // GLightbox
@@ -17,11 +17,10 @@
     });
   });
 
-  // Strong fade-to-black (250ms - 25% faster than Atticus)
-  function handleNavClick(e) {
+  // Fade-to-black transition (250ms)
+  document.addEventListener('click', function (e) {
     const link = e.target.closest('a[href]');
     if (!link) return;
-
     const href = link.getAttribute('href');
     if (href && !href.startsWith('#') && !href.startsWith('http') && !href.includes('#')) {
       e.preventDefault();
@@ -30,8 +29,5 @@
         window.location.href = href;
       }, 250);
     }
-  }
-
-  // Run early and on every click
-  document.addEventListener('click', handleNavClick, true);
+  }, true);
 </script>
