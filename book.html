@@ -1,72 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Now • Eternally Frozen Tattoo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book with Chloe • Eternally Frozen Tattoo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="book-page">
-
-  <section class="min-h-screen pt-24 pb-20 bg-[#0a0005] flex items-center">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h1 class="text-5xl sm:text-7xl accent mb-8">BOOK WITH CHLOE FROESE</h1>
-      <p class="text-xl sm:text-2xl mb-16">Currently tattooing at Dead Man Worx, Chilliwack</p>
-
-      <div class="bg-black/70 rounded-3xl p-12 sm:p-16 gold-border">
-        <h3 class="text-3xl sm:text-4xl mb-10">How to Book</h3>
-        <div class="space-y-8 text-left max-w-md mx-auto text-lg sm:text-xl">
-          <p>1. Choose your flash or send your idea</p>
-          <p>2. Message me on Instagram <span class="accent">@eternallyfrozen.ttt</span></p>
-          <p>3. I’ll confirm your spot and send my e-transfer email</p>
-          <p>4. Deposit holds your time (cash also accepted in shop)</p>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">ETERNALLY FROZEN</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="book.html">Book</a></li>
+                </ul>
+            </div>
         </div>
-        <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank"
-          class="mt-16 inline-block px-10 sm:px-16 py-6 sm:py-7 border-4 border-[#d4af37] text-xl sm:text-2xl hover:bg-[#d4af37] hover:text-black font-bold">
-          MESSAGE ME ON INSTAGRAM
-        </a>
-      </div>
+    </nav>
+
+    <div class="container" style="padding-top: 3rem; max-width: 820px;">
+        <h1 style="text-align: center;">Book with Chloe</h1>
+        <p style="text-align: center; color: #aaa; margin-bottom: 3rem;">Chilliwack, BC • Dead Man Worx</p>
+
+        <!-- Booking Process -->
+        <h2 style="text-align: center; margin-bottom: 2rem;">How It Works</h2>
+        
+        <div class="booking-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Consultation</h3>
+                <p>Reach out with your idea or reference images. We'll discuss placement, size, style, and timeline.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Design & Deposit</h3>
+                <p>Once we align on the concept, a non-refundable deposit secures your date.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Session Day</h3>
+                <p>Arrive with clean skin, hydrated, and ready. Aftercare instructions provided.</p>
+            </div>
+        </div>
+
+        <!-- Fresha / Booking CTA -->
+        <div style="background: #111; padding: 2.5rem; border-radius: 10px; text-align: center; margin: 3rem 0; border: 1px solid #222;">
+            <h3 style="margin-bottom: 1rem;">Ready to book?</h3>
+            <p style="color: #aaa; margin-bottom: 1.5rem;">The fastest way to check availability and book is through Fresha.</p>
+            
+            <!-- UPDATE THIS LINK with the real Fresha URL -->
+            <a href="https://www.fresha.com/" target="_blank" class="cta-button" style="font-size: 1.15rem; padding: 1.1rem 3rem;">
+                Book on Fresha
+            </a>
+            
+            <p style="margin-top: 1.25rem; font-size: 0.9rem; color: #777;">
+                Or message directly on Instagram <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank" style="color: #aaa;"> @eternallyfrozen.ttt</a>
+            </p>
+        </div>
+
+        <!-- Contact Form -->
+        <h2 style="text-align: center; margin: 3rem 0 1.5rem;">Send a Message</h2>
+        <p style="text-align: center; color: #aaa; margin-bottom: 2rem;">For custom ideas or questions before booking.</p>
+
+        <!-- Simple Formspree form - replace YOUR_EMAIL with actual or use Formspree -->
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <input type="text" name="instagram" placeholder="Instagram Handle (optional)">
+            <textarea name="message" rows="6" placeholder="Tell me about your idea, size, placement, or reference photos..." required></textarea>
+            
+            <button type="submit">Send Inquiry</button>
+            
+            <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 1rem;">
+                This form uses Formspree (free). Replace the action URL with your own Formspree endpoint or switch to mailto.
+            </p>
+        </form>
     </div>
-  </section>
 
-  <!-- RELIABLE FADE + HAMBURGER SCRIPT -->
-  <script>
-    const FADE_DURATION = 680;
-    const BLACK_HOLD_ON_LOAD = 380;
-
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `position:fixed;inset:0;background:#000;z-index:10;opacity:1;transition:opacity ${FADE_DURATION}ms cubic-bezier(0.45,0.05,0.55,0.95);`;
-    document.body.appendChild(overlay);
-
-    Promise.all([
-      fetch('header.html').then(r => r.text()).then(h => document.body.insertAdjacentHTML('afterbegin', h)),
-      fetch('footer.html').then(r => r.text()).then(f => document.body.insertAdjacentHTML('beforeend', f))
-    ]).then(() => {
-      const hamburger = document.getElementById('hamburger');
-      const navLinks = document.getElementById('nav-links');
-      if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
-      }
-    });
-
-    setTimeout(() => {
-      overlay.style.opacity = '0';
-      setTimeout(() => overlay.remove(), FADE_DURATION + 50);
-    }, BLACK_HOLD_ON_LOAD);
-
-    document.addEventListener('click', e => {
-      const link = e.target.closest('a[href]');
-      if (!link || link.classList.contains('glightbox')) return;
-      const href = link.getAttribute('href').trim();
-      if (!href || href.startsWith('#') || href.startsWith('http') || href.includes('mailto') || href.includes('tel')) return;
-      e.preventDefault();
-      overlay.style.opacity = '1';
-      setTimeout(() => location.href = href, FADE_DURATION);
-    });
-  </script>
+    <footer style="margin-top: 5rem;">
+        <div class="container">
+            <p>© Eternally Frozen Tattoo — Chloe Froese • Chilliwack, BC</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank">Instagram</a>
+            </p>
+        </div>
+    </footer>
 </body>
-
 </html>
