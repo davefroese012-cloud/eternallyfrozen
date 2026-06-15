@@ -32,6 +32,12 @@
             cursor: pointer;
             z-index: 1001;
         }
+        .loading {
+            color: #aaa;
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 0;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +62,7 @@
         <!-- Gallery Section -->
         <h2 style="margin-bottom: 1.5rem;">Recent Tattoos</h2>
         <div class="gallery-grid" id="gallery-grid">
-            <!-- Gallery items populated by JS below for easy management -->
+            <!-- Populated dynamically by JavaScript -->
         </div>
 
         <!-- Flash / Designs with Pricing -->
@@ -106,31 +112,59 @@
     </footer>
 
     <script>
-        // Gallery data - easy to edit. Add your real image filenames here.
-        const galleryItems = [
-            { src: "images/gallery-01.jpg", alt: "Hyper-realistic portrait tattoo", title: "Hyper-Realistic Portrait" },
-            { src: "images/gallery-02.jpg", alt: "Dark gothic tattoo detail", title: "Dark Gothic" },
-            { src: "images/gallery-03.jpg", alt: "Renaissance-inspired tattoo", title: "Renaissance Inspired" },
-            { src: "images/gallery-04.jpg", alt: "Black and grey realism", title: "Black & Grey Realism" },
-            // Add more as needed. User: replace filenames with your actual files in the images/ folder.
-        ];
-
-        function renderGallery() {
+        // Dynamic gallery - automatically loads all images from the images/ folder
+        async function loadGallery() {
             const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = '';
-            
-            galleryItems.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                div.innerHTML = `
-                    <img src="${item.src}" alt="${item.alt}" style="background: #222; width:100%; height:100%; object-fit:cover;">
-                    <div class="overlay">
-                        <h4>${item.title}</h4>
-                    </div>
-                `;
-                div.onclick = () => openLightbox(item.src, item.alt);
-                grid.appendChild(div);
-            });
+            grid.innerHTML = `<div class="loading">Loading gallery...</div>`;
+
+            try {
+                const response = await fetch('https://api.github.com/repos/davefroese012-cloud/eternallyfrozen/contents/images');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load images');
+                }
+
+                const files = await response.json();
+
+                // Filter only image files
+                const imageFiles = files.filter(file => 
+                    file.type === 'file' && 
+                    /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name)
+                );
+
+                // Sort alphabetically by filename
+                imageFiles.sort((a, b) => a.name.localeCompare(b.name));
+
+                grid.innerHTML = '';
+
+                if (imageFiles.length === 0) {
+                    grid.innerHTML = `<p style="color:#aaa; grid-column: 1 / -1; text-align:center; padding:2rem;">No images found yet. Add some to the images/ folder!</p>`;
+                    return;
+                }
+
+                imageFiles.forEach(file => {
+                    const cleanName = file.name
+                        .replace(/\.[^/.]+$/, "")           // remove extension
+                        .replace(/[-_]/g, ' ');               // replace dashes/underscores with spaces
+
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+                    div.innerHTML = `
+                        <img src="${file.download_url}" alt="${cleanName}" style="width:100%; height:100%; object-fit:cover;">
+                        <div class="overlay">
+                            <h4>${cleanName}</h4>
+                        </div>
+                    `;
+                    div.onclick = () => openLightbox(file.download_url, cleanName);
+                    grid.appendChild(div);
+                });
+
+            } catch (error) {
+                console.error(error);
+                grid.innerHTML = `<p style="color:#ff6b6b; grid-column: 1 / -1; text-align:center; padding:2rem;">
+                    Error loading images. Please refresh the page or try again later.
+                </p>`;
+            }
         }
 
         function openLightbox(src, alt) {
@@ -148,16 +182,8 @@
             document.body.style.overflow = '';
         }
 
-        // Keyboard escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const lightbox = document.getElementById('lightbox');
-                if (lightbox.classList.contains('active')) closeLightbox();
-            }
-        });
-
-        // Initialize
-        renderGallery();
+        // Load gallery when page loads
+        loadGallery();
     </script>
 </body>
 </html>
