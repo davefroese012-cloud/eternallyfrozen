@@ -64,13 +64,13 @@
         <h1 style="text-align: center; margin-bottom: 0.5rem;">Work</h1>
         <p style="text-align: center; color: #aaa; margin-bottom: 3rem;">Selected pieces by Chloe Froese</p>
 
-        <!-- Gallery Section -->
+        <!-- Gallery Section - pulls automatically from images/portfolio/ -->
         <h2 style="margin-bottom: 1.5rem;">Recent Tattoos</h2>
         <div class="gallery-grid" id="gallery-grid">
-            <!-- Populated dynamically -->
+            <!-- Populated dynamically from images/portfolio/ -->
         </div>
 
-        <!-- Flash / Designs with Pricing -->
+        <!-- Flash / Designs with Pricing (manual for now) -->
         <h2 style="margin: 4rem 0 1.5rem;">Flash Designs & Pricing</h2>
         <p style="color: #aaa; max-width: 600px; margin-bottom: 2rem;">
             Select flash pieces available. Custom work and larger pieces quoted after consultation.
@@ -115,38 +115,35 @@
     </footer>
 
     <script>
+        // Dynamic gallery - automatically loads images from images/portfolio/
         async function loadGallery() {
             const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = `<div class="loading">Loading gallery from GitHub...</div>`;
+            grid.innerHTML = `<div class="loading">Loading gallery...</div>`;
 
             try {
-                const apiUrl = 'https://api.github.com/repos/davefroese012-cloud/eternallyfrozen/contents/images';
-                console.log('Fetching from:', apiUrl);
-
+                // Change this path if you want to pull from a different folder
+                const apiUrl = 'https://api.github.com/repos/davefroese012-cloud/eternallyfrozen/contents/images/portfolio';
+                
                 const response = await fetch(apiUrl);
 
-                console.log('Response status:', response.status);
-
                 if (!response.ok) {
-                    throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+                    throw new Error(`GitHub API error: ${response.status}`);
                 }
 
                 const files = await response.json();
-                console.log('Files received:', files.length);
 
+                // Filter only image files
                 const imageFiles = files.filter(file => 
                     file.type === 'file' && 
                     /\.(jpg|jpeg|png|webp|gif)$/i.test(file.name)
                 );
-
-                console.log('Image files found:', imageFiles.length);
 
                 imageFiles.sort((a, b) => a.name.localeCompare(b.name));
 
                 grid.innerHTML = '';
 
                 if (imageFiles.length === 0) {
-                    grid.innerHTML = `<p class="error">No image files found in the images/ folder yet.</p>`;
+                    grid.innerHTML = `<p class="error">No images found in images/portfolio/ yet.</p>`;
                     return;
                 }
 
@@ -168,13 +165,8 @@
                 });
 
             } catch (error) {
-                console.error('Gallery loading error:', error);
-                grid.innerHTML = `
-                    <p class="error">
-                        Failed to load images.<br>
-                        Error: ${error.message}<br><br>
-                        Please check the browser console (F12) for details.
-                    </p>`;
+                console.error(error);
+                grid.innerHTML = `<p class="error">Failed to load images from portfolio folder.</p>`;
             }
         }
 
@@ -193,7 +185,6 @@
             document.body.style.overflow = '';
         }
 
-        // Load gallery
         loadGallery();
     </script>
 </body>
