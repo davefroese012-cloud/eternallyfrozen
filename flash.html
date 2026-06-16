@@ -4,27 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flash • Eternally Frozen Tattoo • Chloe Froese</title>
+  <title>Flash Designs • Eternally Frozen Tattoo</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      aspect-ratio: 1 / 1;
+      border-radius: 12px;
+      background: #111;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: 220px;
+      object-fit: contain;
+      background: #0a0a0a;
+      padding: 12px;
       transition: all 0.4s ease;
-      filter: grayscale(85%);
-    }
-
-    .gallery-item:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.08);
     }
 
     .overlay {
@@ -32,22 +41,73 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-      color: white;
-      padding: 1.2rem 1rem 1rem;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+      padding: 1rem 1rem 1.2rem;
       opacity: 0;
       transition: opacity 0.3s ease;
-      text-align: center;
+      color: white;
     }
 
     .gallery-item:hover .overlay {
       opacity: 1;
     }
 
+    .design-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .price-list {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .price {
       font-weight: bold;
       color: #e63939;
-      font-size: 1.1rem;
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.96);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92%;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #fff;
+      font-size: 3.2rem;
+      cursor: pointer;
+      z-index: 1001;
+      line-height: 1;
+      user-select: none;
     }
   </style>
 </head>
@@ -68,9 +128,11 @@
     </div>
   </nav>
 
-  <div class="container" style="padding-top: 3rem;">
+  <div class="container" style="padding-top: 3rem; max-width: 1200px;">
     <h1 style="text-align: center; margin-bottom: 0.5rem;">Flash Designs</h1>
-    <p style="text-align: center; color: #aaa; margin-bottom: 3rem;">Ready-to-go designs • Prices are starting points
+    <p
+      style="text-align: center; color: #aaa; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Ready-to-go designs. Prices shown are for the listed sizes.
     </p>
 
     <div class="gallery-grid" id="flash-grid"></div>
@@ -79,16 +141,54 @@
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <span class="lightbox-close">&times;</span>
-    <img id="lightbox-img" alt="Enlarged tattoo photo">
+    <img id="lightbox-img" alt="Flash design">
   </div>
 
   <footer>
     <div class="container">
-      <p>© Eternally Frozen Tattoo — Chloe Froese</p>
+      <p>© Eternally Frozen Tattoo — Chloe Froese • Chilliwack, BC</p>
     </div>
   </footer>
 
   <script>
+    function parseFlashFilename(filename) {
+      // Remove extension
+      let name = filename.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+      const parts = name.split('-');
+
+      let displayNameParts = [];
+      const sizesAndPrices = [];
+
+      for (let i = 0; i < parts.length; i++) {
+        const part = parts[i];
+        // Check if this part looks like a size (e.g. 3in, 2.5in)
+        if (/^\d+(\.\d+)?in$/i.test(part)) {
+          sizesAndPrices.push({ size: part });
+        }
+        // Check if this part looks like a price (numbers only)
+        else if (/^\d+(\.\d+)?$/.test(part) && sizesAndPrices.length > 0 && !sizesAndPrices[sizesAndPrices.length - 1].price) {
+          sizesAndPrices[sizesAndPrices.length - 1].price = part;
+        } else {
+          displayNameParts.push(part);
+        }
+      }
+
+      const displayName = displayNameParts.join(' ').replace(/-/g, ' ').trim();
+
+      let priceHTML = '';
+      if (sizesAndPrices.length > 0) {
+        priceHTML = '<div class="price-list">';
+        sizesAndPrices.forEach(item => {
+          if (item.size && item.price) {
+            priceHTML += `<div class="price-item"><span>${item.size}</span> <span class="price">$${item.price}</span></div>`;
+          }
+        });
+        priceHTML += '</div>';
+      }
+
+      return { displayName, priceHTML };
+    }
+
     async function loadFlash() {
       const grid = document.getElementById('flash-grid');
       grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #666;">Loading flash designs...</p>';
@@ -101,38 +201,30 @@
 
         const imageFiles = files.filter(file =>
           file.type === 'file' && /\.(jpg|jpeg|png|webp)$/i.test(file.name)
-        );
+        ).sort((a, b) => a.name.localeCompare(b.name));
 
         imageFiles.forEach(file => {
-          const name = file.name.replace(/\.(jpg|jpeg|png|webp)$/i, '');
-          const lastDash = name.lastIndexOf('-');
-          let displayName = name.replace(/-/g, ' ');
-          let price = '';
-
-          if (lastDash > 0) {
-            displayName = name.substring(0, lastDash).replace(/-/g, ' ');
-            price = name.substring(lastDash + 1);
-          }
+          const parsed = parseFlashFilename(file.name);
 
           const div = document.createElement('div');
           div.className = 'gallery-item';
           div.innerHTML = `
                         <img src="https://raw.githubusercontent.com/davefroese012-cloud/eternallyfrozen/main/images/flash/${file.name}" 
-                             alt="${displayName}">
+                             alt="${parsed.displayName}">
                         <div class="overlay">
-                            <h4>${displayName}</h4>
-                            ${price ? `<div class="price">$${price}</div>` : ''}
+                            <div class="design-name">${parsed.displayName}</div>
+                            ${parsed.priceHTML}
                         </div>
                     `;
           div.onclick = () => openLightbox(
             `https://raw.githubusercontent.com/davefroese012-cloud/eternallyfrozen/main/images/flash/${file.name}`,
-            displayName
+            parsed.displayName
           );
           grid.appendChild(div);
         });
 
       } catch (e) {
-        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #e63939;">No flash designs yet. Check back soon!</p>';
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #e63939;">No flash designs yet.</p>';
       }
     }
 
@@ -150,6 +242,14 @@
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
     }
+
+    // Keyboard escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) closeLightbox();
+      }
+    });
 
     loadFlash();
   </script>
