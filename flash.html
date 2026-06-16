@@ -16,24 +16,29 @@
     .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 12px;
-      background: #111;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 14px;
+      background: #0f0f0f;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery-item:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 260px;
+      height: 270px;
       object-fit: contain;
-      background: #0a0a0a;
-      padding: 14px;
-      transition: all 0.4s ease;
+      background: #111;
+      padding: 18px 12px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
     }
 
     .overlay {
@@ -41,12 +46,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.94));
-      padding: 1.1rem 1.1rem 1.3rem;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+      padding: 1.15rem 1.15rem 1.35rem;
       opacity: 0;
       transition: opacity 0.3s ease;
       color: white;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.95);
     }
 
     .gallery-item:hover .overlay {
@@ -62,7 +67,7 @@
 
     .price-list {
       font-size: 1rem;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .price-item {
@@ -84,7 +89,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.96);
+      background: rgba(0, 0, 0, 0.97);
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -98,7 +103,7 @@
       max-width: 94%;
       max-height: 90vh;
       border-radius: 8px;
-      box-shadow: 0 10px 60px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 10px 60px rgba(0, 0, 0, 0.9);
     }
 
     .lightbox-close {
@@ -162,7 +167,6 @@
 
       for (let i = 0; i < parts.length; i++) {
         const part = parts[i];
-
         if (/^\d+(\.\d+)?in$/i.test(part)) {
           sizePricePairs.push({ size: part });
         }
@@ -180,7 +184,6 @@
         priceHTML = '<div class="price-list">';
         sizePricePairs.forEach(pair => {
           if (pair.size && pair.price) {
-            // Format: 3.5" — $540
             priceHTML += `<div class="price-item"><span>${pair.size.replace('in', '"')}</span> <span>—</span> <span class="price">$${pair.price}</span></div>`;
           }
         });
