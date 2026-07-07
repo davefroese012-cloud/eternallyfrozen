@@ -13,18 +13,18 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": ["LocalBusiness", "TattooParlor"],
+      "@type": "TattooParlor",
       "name": "Eternally Frozen Tattoo",
-      "description": "Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic work, and Renaissance-inspired tattoos.",
+      "description": "Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic, and Renaissance-inspired tattoos.",
       "url": "https://eternallyfrozen.ca",
-      "telephone": "+1-604-XXX-XXXX",
+      "telephone": "+1 604-991-5208",
       "email": "chloe@eternallyfrozen.ca",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Dead Man Worx",
+        "streetAddress": "45883 Wellington Ave",
         "addressLocality": "Chilliwack",
         "addressRegion": "BC",
-        "postalCode": "V2P",
+        "postalCode": "V2P 2C8",
         "addressCountry": "CA"
       },
       "geo": {
@@ -32,10 +32,19 @@
         "latitude": "49.1579",
         "longitude": "-121.9514"
       },
-      "openingHours": "By Appointment",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "18:00"
+      },
       "image": "https://eternallyfrozen.ca/images/headshots/Deadman-Artist-Headshot.webp",
       "priceRange": "$$",
-      "areaServed": ["Chilliwack", "Abbotsford", "Sardis", "Yarrow", "Rosedale", "Fraser Valley"]
+      "areaServed": [
+        { "@type": "City", "name": "Chilliwack" },
+        { "@type": "City", "name": "Abbotsford" },
+        { "@type": "City", "name": "Sardis" }
+      ]
     }
     </script>
 </head>
