@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book with Chloe • Eternally Frozen Tattoo</title>
+    <title>Book a Session • Eternally Frozen Tattoo • Chloe Froese</title>
+    <meta name="description"
+        content="Book a tattoo session or inquire with Chloe Froese at Eternally Frozen in Chilliwack, BC.">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .booking-form {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #111;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid #222;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            color: #ddd;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e63939;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 2rem;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -22,63 +85,71 @@
         </div>
     </nav>
 
-    <div class="container" style="padding-top: 3rem; max-width: 820px;">
-        <h1 style="text-align: center;">Book with Chloe</h1>
-        <p style="text-align: center; color: #aaa; margin-bottom: 3rem;">Chilliwack, BC • Dead Man Worx</p>
-
-        <!-- Booking Process -->
-        <h2 style="text-align: center; margin-bottom: 2rem;">How It Works</h2>
-        
-        <div class="booking-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Consultation</h3>
-                <p>Reach out with your idea or reference images. We'll discuss placement, size, style, and timeline.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Design & Deposit</h3>
-                <p>Once we align on the concept, a non-refundable deposit secures your date.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Session Day</h3>
-                <p>Arrive with clean skin, hydrated, and ready. Aftercare instructions provided.</p>
-            </div>
-        </div>
-
-        <!-- Fresha / Booking CTA -->
-        <div style="background: #111; padding: 2.5rem; border-radius: 10px; text-align: center; margin: 3rem 0; border: 1px solid #222;">
-            <h3 style="margin-bottom: 1rem;">Ready to book?</h3>
-            <p style="color: #aaa; margin-bottom: 1.5rem;">The fastest way to check availability and book is through Fresha.</p>
-            
-            <!-- UPDATE THIS LINK with the real Fresha URL -->
-            <a href="https://www.fresha.com/" target="_blank" class="cta-button" style="font-size: 1.15rem; padding: 1.1rem 3rem;">
-                Book on Fresha
-            </a>
-            
-            <p style="margin-top: 1.25rem; font-size: 0.9rem; color: #777;">
-                Or message directly on Instagram <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank" style="color: #aaa;"> @eternallyfrozen.ttt</a>
+    <div class="container" style="padding-top: 3rem; max-width: 800px;">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1>Book a Session or Inquire</h1>
+            <p style="font-size: 1.2rem; color: #aaa; max-width: 600px; margin: 1rem auto;">
+                Whether you're interested in a custom piece or one of the flash designs,
+                fill out the form below and Chloe will get back to you within 1–2 business days.
             </p>
         </div>
 
-        <!-- Contact Form -->
-        <h2 style="text-align: center; margin: 3rem 0 1.5rem;">Send a Message</h2>
-        <p style="text-align: center; color: #aaa; margin-bottom: 2rem;">For custom ideas or questions before booking.</p>
+        <!-- Booking / Inquiry Form -->
+        <form action="https://formspree.io/f/mkolagzg" method="POST" class="booking-form">
 
-        <!-- Simple Formspree form - replace YOUR_EMAIL with actual or use Formspree -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
+            <!-- Honeypot spam protection -->
+            <input type="text" name="_gotcha" style="display:none">
+
+            <!-- Custom email subject -->
+            <input type="hidden" name="_subject" value="New Inquiry from Eternally Frozen Website">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
             </div>
-            <input type="text" name="instagram" placeholder="Instagram Handle (optional)">
-            <textarea name="message" rows="6" placeholder="Tell me about your idea, size, placement, or reference photos..." required></textarea>
-            
-            <button type="submit">Send Inquiry</button>
-            
-            <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 1rem;">
-                This form uses Formspree (free). Replace the action URL with your own Formspree endpoint or switch to mailto.
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="timeframe">Preferred Timeframe</label>
+                    <input type="text" id="timeframe" name="timeframe" placeholder="e.g. September – October 2026">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="type">What are you interested in? *</label>
+                <select id="type" name="type" required>
+                    <option value="">Please select...</option>
+                    <option value="Custom tattoo idea">Custom tattoo idea</option>
+                    <option value="Specific flash design">Specific flash design</option>
+                    <option value="Consultation / Advice">Consultation / Advice</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Tell me about your idea *</label>
+                <textarea id="message" name="message" rows="7" required
+                    placeholder="Size, placement, style references, any specific elements..."></textarea>
+            </div>
+
+            <button type="submit" class="cta-button" style="width: 100%; font-size: 1.1rem; padding: 1.1rem;">
+                Send Inquiry
+            </button>
+
+            <p class="form-note">
+                All inquiries are replied to within 1–2 business days.<br>
+                For urgent matters, you can also email directly: <a
+                    href="mailto:chloe@eternallyfrozen.ca">chloe@eternallyfrozen.ca</a>
             </p>
         </form>
     </div>
@@ -86,10 +157,8 @@
     <footer style="margin-top: 5rem;">
         <div class="container">
             <p>© Eternally Frozen Tattoo — Chloe Froese • Chilliwack, BC</p>
-            <p style="margin-top: 0.5rem;">
-                <a href="https://www.instagram.com/eternallyfrozen.ttt/" target="_blank">Instagram</a>
-            </p>
         </div>
     </footer>
 </body>
+
 </html>
