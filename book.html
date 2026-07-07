@@ -94,13 +94,10 @@
             </p>
         </div>
 
-        <!-- Booking / Inquiry Form -->
+        <!-- Booking Form -->
         <form action="https://formspree.io/f/mkolagzg" method="POST" class="booking-form">
 
-            <!-- Honeypot spam protection -->
             <input type="text" name="_gotcha" style="display:none">
-
-            <!-- Custom email subject -->
             <input type="hidden" name="_subject" value="New Inquiry from Eternally Frozen Website">
 
             <div class="form-row">
@@ -138,7 +135,7 @@
 
             <div class="form-group">
                 <label for="message">Tell me about your idea *</label>
-                <textarea id="message" name="message" rows="7" required
+                <textarea id="message" name="message" rows="8" required
                     placeholder="Size, placement, style references, any specific elements..."></textarea>
             </div>
 
@@ -159,6 +156,34 @@
             <p>© Eternally Frozen Tattoo — Chloe Froese • Chilliwack, BC</p>
         </div>
     </footer>
+
+    <script>
+        // Pre-fill form when coming from Flash page
+        function prefillBookingForm() {
+            const params = new URLSearchParams(window.location.search);
+
+            const design = params.get('design');
+            const size = params.get('size');
+            const price = params.get('price');
+
+            if (design && size && price) {
+                const messageField = document.getElementById('message');
+
+                const prefilledText =
+                    `I'm interested in the "${design}" flash design.
+
+Size: ${size.replace('in', '"')}
+Quoted Price: $${price}
+
+[Please add any additional details here]`;
+
+                messageField.value = prefilledText;
+                messageField.focus();
+            }
+        }
+
+        window.onload = prefillBookingForm;
+    </script>
 </body>
 
 </html>
