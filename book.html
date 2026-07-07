@@ -68,21 +68,42 @@
         }
     </style>
 
-    <!-- Schema.org -->
+    <!-- Schema.org LocalBusiness + TattooParlor -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": ["LocalBusiness", "TattooParlor"],
+      "@type": "TattooParlor",
       "name": "Eternally Frozen Tattoo",
+      "description": "Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic, and Renaissance-inspired tattoos.",
       "url": "https://eternallyfrozen.ca",
-      "telephone": "+1-604-XXX-XXXX",
+      "telephone": "+1 604-991-5208",
       "email": "chloe@eternallyfrozen.ca",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "45883 Wellington Ave",
         "addressLocality": "Chilliwack",
         "addressRegion": "BC",
+        "postalCode": "V2P 2C8",
         "addressCountry": "CA"
-      }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.1579",
+        "longitude": "-121.9514"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "18:00"
+      },
+      "image": "https://eternallyfrozen.ca/images/headshots/Deadman-Artist-Headshot.webp",
+      "priceRange": "$$",
+      "areaServed": [
+        { "@type": "City", "name": "Chilliwack" },
+        { "@type": "City", "name": "Abbotsford" },
+        { "@type": "City", "name": "Sardis" }
+      ]
     }
     </script>
 </head>
@@ -112,8 +133,13 @@
             </p>
         </div>
 
+        <!-- Booking Form -->
         <form action="https://formspree.io/f/mkolagzg" method="POST" class="booking-form">
+
+            <!-- Honeypot -->
             <input type="text" name="_gotcha" style="display:none">
+
+            <!-- Email subject -->
             <input type="hidden" name="_subject" value="New Inquiry from Eternally Frozen Website">
 
             <div class="form-row">
@@ -173,6 +199,7 @@
     </footer>
 
     <script>
+        // Pre-fill form when coming from Flash page
         function prefillBookingForm() {
             const params = new URLSearchParams(window.location.search);
             const design = params.get('design');
@@ -188,10 +215,12 @@ Size: ${size.replace('in', '"')}
 Quoted Price: $${price}
 
 [Please add any additional details here]`;
+
                 messageField.value = prefilledText;
                 messageField.focus();
             }
         }
+
         window.onload = prefillBookingForm;
     </script>
 </body>
