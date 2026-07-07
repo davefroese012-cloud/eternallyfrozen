@@ -1,65 +1,182 @@
-/* === Balanced Split Hero === */
-.hero-split {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 3rem;
-padding: 3rem 0;
-max-width: 1200px;
-margin: 0 auto;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.hero-text {
-flex: 1;
-max-width: 520px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chilliwack Tattoo Artist | Hyper-Realism, Gothic & Renaissance Tattoos | Eternally Frozen</title>
+    <meta name="description"
+        content="Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic, and Renaissance-inspired tattoos. Based at Dead Man Worx. Serving the Fraser Valley including Abbotsford. Book your session.">
+    <link rel="stylesheet" href="styles.css">
 
-.hero-text h1 {
-font-size: 3.2rem;
-margin-bottom: 1rem;
-}
+    <!-- Schema.org LocalBusiness + TattooParlor -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "TattooParlor"],
+      "name": "Eternally Frozen Tattoo",
+      "description": "Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic work, and Renaissance-inspired tattoos.",
+      "url": "https://eternallyfrozen.ca",
+      "telephone": "+1-604-XXX-XXXX",
+      "email": "chloe@eternallyfrozen.ca",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dead Man Worx",
+        "addressLocality": "Chilliwack",
+        "addressRegion": "BC",
+        "postalCode": "V2P",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.1579",
+        "longitude": "-121.9514"
+      },
+      "openingHours": "By Appointment",
+      "image": "https://eternallyfrozen.ca/images/headshots/Deadman-Artist-Headshot.webp",
+      "priceRange": "$$",
+      "areaServed": ["Chilliwack", "Abbotsford", "Sardis", "Yarrow", "Rosedale", "Fraser Valley"]
+    }
+    </script>
+</head>
 
-.hero-text .tagline {
-font-size: 1.35rem;
-color: #ccc;
-margin-bottom: 2rem;
-}
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">ETERNALLY FROZEN</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="flash.html">Flash</a></li>
+                    <li><a href="book.html">Book</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-.hero-buttons {
-display: flex;
-gap: 1rem;
-flex-wrap: wrap;
-}
+    <!-- Hero with Photo on Right -->
+    <header class="hero-split">
+        <div class="hero-text">
+            <h1>Chloe Froese</h1>
+            <p class="tagline">Hyper-Realism • Dark Gothic • Renaissance</p>
 
-.hero-image {
-flex: 1;
-max-width: 520px;
-}
+            <div class="hero-buttons">
+                <a href="book.html" class="cta-button">Book a Session</a>
+                <a href="flash.html" class="cta-button outline">Browse Flash</a>
+            </div>
 
-.hero-image img {
-width: 100%;
-height: auto;
-border-radius: 12px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
+            <p class="location">Chilliwack, BC • Dead Man Worx</p>
+        </div>
 
-.location {
-margin-top: 2rem;
-color: #aaa;
-font-size: 1rem;
-}
+        <div class="hero-image">
+            <img src="images/headshots/Deadman-Artist-Headshot.webp" alt="Chloe Froese - Tattoo Artist">
+        </div>
+    </header>
 
-/* Responsive */
-@media (max-width: 900px) {
-.hero-split {
-flex-direction: column;
-text-align: center;
-}
-.hero-text {
-max-width: 100%;
-}
-.hero-image {
-max-width: 100%;
-margin-top: 2rem;
-}
-}
+    <!-- About -->
+    <section class="section">
+        <div class="container">
+            <div class="about-content" style="max-width: 820px; margin: 0 auto; text-align: center;">
+                <h2>About Chloe</h2>
+                <p style="font-size: 1.15rem; line-height: 1.8;">
+                    After completing her apprenticeship under Chris Pecor at Dead Man Worx, Chloe launched Eternally
+                    Frozen.
+                    She specializes in hyper-realistic portraits, intricate dark gothic work, and Renaissance-inspired
+                    tattoos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work -->
+    <section class="section" style="background: #111;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Selected Work</h2>
+                <p style="color: #aaa;">Recent pieces by Chloe Froese</p>
+            </div>
+
+            <div class="gallery-grid" style="max-width: 1100px; margin: 0 auto;">
+                <div class="gallery-item" onclick="window.location.href='work.html'">
+                    <img src="images/portfolio/grandmother2.jpeg" alt="Hyper-realistic portrait tattoo">
+                    <div class="overlay">
+                        <h4>Hyper-Realistic Portrait</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='work.html'">
+                    <img src="images/portfolio/memento-mori-skull.jpeg" alt="Dark gothic tattoo">
+                    <div class="overlay">
+                        <h4>Dark Gothic</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="window.location.href='work.html'">
+                    <img src="images/portfolio/michelangelo-pieta.jpeg" alt="Renaissance-inspired tattoo">
+                    <div class="overlay">
+                        <h4>Renaissance Inspired</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="text-align: center; margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="work.html" class="cta-button outline">View Full Portfolio</a>
+                <a href="book.html" class="cta-button">Book a Session</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Designs -->
+    <section class="section">
+        <div class="container" style="text-align: center; max-width: 700px;">
+            <h2>Flash Designs Available</h2>
+            <p style="font-size: 1.2rem; color: #aaa; margin: 1.5rem 0;">
+                Ready-to-go designs with clear pricing.
+            </p>
+            <a href="flash.html" class="cta-button">Browse Flash Designs &amp; Pricing</a>
+        </div>
+    </section>
+
+    <!-- Specialties + Service Areas -->
+    <section class="section" style="background: #111;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Specialties</h2>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto 4rem;">
+                <div style="background: #1a1a1a; padding: 2.2rem; border-radius: 10px;">
+                    <h3>Hyper-Realistic Portraits</h3>
+                    <p style="color: #aaa;">Lifelike detail and emotional depth.</p>
+                </div>
+                <div style="background: #1a1a1a; padding: 2.2rem; border-radius: 10px;">
+                    <h3>Dark Gothic</h3>
+                    <p style="color: #aaa;">Intricate, moody, and atmospheric work.</p>
+                </div>
+                <div style="background: #1a1a1a; padding: 2.2rem; border-radius: 10px;">
+                    <h3>Renaissance Inspired</h3>
+                    <p style="color: #aaa;">Classical beauty with modern technique.</p>
+                </div>
+            </div>
+
+            <!-- Service Areas -->
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2>Serving the Fraser Valley</h2>
+                <p style="font-size: 1.15rem; color: #aaa; margin-top: 1rem;">
+                    Based in Chilliwack at Dead Man Worx. Welcoming clients from Abbotsford, Sardis, Yarrow, Rosedale,
+                    and the surrounding Fraser Valley.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© Eternally Frozen Tattoo — Chloe Froese • Chilliwack, BC</p>
+        </div>
+    </footer>
+</body>
+
+</html>
