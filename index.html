@@ -4,61 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternally Frozen Tattoo • Chloe Froese | Chilliwack, BC</title>
+    <title>Chilliwack Tattoo Artist | Hyper-Realism, Gothic & Renaissance Tattoos | Eternally Frozen</title>
     <meta name="description"
-        content="Chloe Froese — Hyper-realistic portraits, dark gothic, and Renaissance-inspired tattoos in Chilliwack, BC.">
+        content="Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic, and Renaissance-inspired tattoos. Based at Dead Man Worx. Serving the Fraser Valley including Abbotsford. Book your session.">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .split-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
-            align-items: center;
-        }
 
-        .split-hero-text {
-            padding: 4rem 3rem;
-            max-width: 620px;
-        }
-
-        .split-hero-text h1 {
-            font-size: 3.8rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .split-hero-text .tagline {
-            font-size: 1.35rem;
-            color: #ccc;
-            margin-bottom: 2.5rem;
-        }
-
-        .split-hero-image {
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .split-hero-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent);
-        }
-
-        @media (max-width: 900px) {
-            .split-hero {
-                grid-template-columns: 1fr;
-            }
-
-            .split-hero-image {
-                height: 65vh;
-                order: -1;
-            }
-        }
-    </style>
+    <!-- Schema.org LocalBusiness + TattooParlor -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "TattooParlor"],
+      "name": "Eternally Frozen Tattoo",
+      "description": "Chilliwack tattoo artist Chloe Froese specializing in hyper-realistic portraits, dark gothic work, and Renaissance-inspired tattoos.",
+      "url": "https://eternallyfrozen.ca",
+      "telephone": "+1-604-XXX-XXXX",
+      "email": "chloe@eternallyfrozen.ca",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dead Man Worx",
+        "addressLocality": "Chilliwack",
+        "addressRegion": "BC",
+        "postalCode": "V2P",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.1579",
+        "longitude": "-121.9514"
+      },
+      "openingHours": "By Appointment",
+      "image": "https://eternallyfrozen.ca/images/headshots/Deadman-Artist-Headshot.webp",
+      "priceRange": "$$",
+      "areaServed": [
+        "Chilliwack",
+        "Abbotsford",
+        "Sardis",
+        "Yarrow",
+        "Rosedale",
+        "Fraser Valley"
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -79,7 +65,6 @@
 
     <!-- Split Hero -->
     <header class="split-hero">
-        <!-- Text Side -->
         <div class="split-hero-text">
             <h1>Chloe Froese</h1>
             <p class="tagline">Hyper-Realism • Dark Gothic • Renaissance</p>
@@ -95,7 +80,6 @@
             </p>
         </div>
 
-        <!-- Photo Side -->
         <div class="split-hero-image" style="background-image: url('images/headshots/Deadman-Artist-Headshot.webp');">
         </div>
     </header>
@@ -190,6 +174,17 @@
                     <p style="color: #aaa;">Classical beauty with modern technique.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="section">
+        <div class="container" style="text-align: center; max-width: 800px;">
+            <h2>Serving the Fraser Valley</h2>
+            <p style="font-size: 1.15rem; color: #aaa; margin-top: 1rem;">
+                Based in Chilliwack at Dead Man Worx, Chloe welcomes clients from across the Fraser Valley,
+                including Abbotsford, Sardis, Yarrow, Rosedale, and surrounding communities.
+            </p>
         </div>
     </section>
 
