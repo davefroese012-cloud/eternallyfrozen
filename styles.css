@@ -4,9 +4,10 @@
   --bg-card: #111111;
   --text: #f5f5f5;
   --text-muted: #a3a3a3;
-  --accent: #9f1239;
-  /* Deep crimson for gothic/Renaissance feel */
-  --accent-light: #be123c;
+  --accent: #15803d;
+  /* Deep green */
+  --accent-light: #16a34a;
+  /* Brighter green on hover */
   --border: #222222;
 }
 
