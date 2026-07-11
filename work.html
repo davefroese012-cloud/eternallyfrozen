@@ -158,9 +158,24 @@
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            // Clear the image src after closing (optional but cleaner)
+            setTimeout(() => {
+                img.src = '';
+            }, 300);
         }
+
+        // Close lightbox when pressing Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            }
+        });
 
         // Load Portfolio
         loadGallery('portfolio', 'portfolio-grid');
