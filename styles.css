@@ -488,7 +488,7 @@ footer a:hover {
   }
 }
 /* ========================================
-   Full-screen Video Hero
+   Full-screen Video Hero (Tighter Version)
    ======================================== */
 .hero-video {
   position: relative;
@@ -508,56 +508,63 @@ footer a:hover {
   z-index: 0;
 }
 
-/* Dark gradient overlay for text readability */
+/* Dark gradient overlay */
 .hero-overlay {
   position: relative;
   z-index: 1;
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.45) 0%,
-      rgba(0, 0, 0, 0.60) 40%,
-      rgba(0, 0, 0, 0.75) 100%);
+      rgba(0, 0, 0, 0.40) 0%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.70) 100%);
   display: flex;
   align-items: center;
+  /* true vertical centering */
   justify-content: center;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 }
 
 .hero-content {
   max-width: 900px;
+  transform: translateY(-20px);
+  /* slight upward pull for better balance */
 }
 
 .hero-video h1 {
   font-size: 4.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
+  /* tighter */
   letter-spacing: -0.03em;
   text-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
 }
 
 .hero-video .tagline {
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   color: #e5e5e5;
-  margin-bottom: 2.75rem;
+  margin-bottom: 1.8rem;
+  /* tighter */
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .hero-video .hero-buttons {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
+  /* tighter */
 }
 
 .hero-video .location {
   color: #bbbbbb;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.5px;
+  margin-top: 0;
 }
 
-/* Make outline button work well over video */
+/* Outline button */
 .cta-button.outline {
   background: transparent;
   border: 2px solid #ffffff;
@@ -576,12 +583,21 @@ footer a:hover {
     min-height: 560px;
   }
 
+  .hero-content {
+    transform: none;
+  }
+
   .hero-video h1 {
     font-size: 2.9rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero-video .tagline {
     font-size: 1.25rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-video .hero-buttons {
+    margin-bottom: 1.25rem;
   }
 }
