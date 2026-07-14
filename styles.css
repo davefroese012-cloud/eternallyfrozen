@@ -9,6 +9,24 @@
   --accent-light: #16a34a;
   /* Brighter green on hover */
   --border: #222222;
+  --font-primary: Georgia, serif;
+}
+
+/* === Global Font: Georgia === */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+textarea,
+select {
+  font-family: Georgia, serif;
 }
 
 * {
@@ -126,7 +144,7 @@ nav {
 
 .cta-button {
   display: inline-block;
-  background: var(--accent);
+  background: #14241A;
   color: white;
   padding: 1rem 2.5rem;
   font-size: 1.05rem;
@@ -138,7 +156,7 @@ nav {
 }
 
 .cta-button:hover {
-  background: var(--accent-light);
+  background: #1e3626;
   transform: translateY(-2px);
 }
 
@@ -564,17 +582,16 @@ footer a:hover {
   margin-top: 0;
 }
 
-/* Outline button */
+/* Outline version */
 .cta-button.outline {
   background: transparent;
-  border: 2px solid #ffffff;
-  color: #ffffff;
+  border: 2px solid #14241A;
+  color: #14241A;
 }
 
 .cta-button.outline:hover {
-  background: #ffffff;
-  color: #0a0a0a;
-  border-color: #ffffff;
+  background: #14241A;
+  color: white;
 }
 
 /* Mobile */
